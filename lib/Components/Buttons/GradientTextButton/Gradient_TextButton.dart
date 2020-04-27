@@ -59,7 +59,8 @@ class WVGradientTextButton extends StatelessWidget {
     ButtonShapes buttonShapes = ButtonShapes(this.shape, this.cornerRadius);
     buttonShapes.checkButtonShape();
     ButtonSizes buttonSizes = ButtonSizes(
-        buttonSize: this.size, padding: this.padding
+        buttonSize: this.size
+        , padding: this.padding
     );
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;

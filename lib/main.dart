@@ -66,49 +66,11 @@ class MyHomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                WVBasicTextButton(
-                  shape: ButtonShape.Flat,
-                  width: ButtonWidthType.FullWidth,
-                  size: ButtonSize.Small,
-                  text: Text('login', style: TextStyle(color: Colors.white),),
-                  onPressed: (){},
-                ),
-                WVGradientTextButton(
-                  shape: ButtonShape.Round,
-                  width: ButtonWidthType.FullWidth,
-                  size: ButtonSize.Mini,
-                  text: Text('Follow' ,style: TextStyle(color: Colors.white),),
-                  onPressed: (){},
-                ),
-              Container(
-              height: 45,
-              child: RaisedButton(
-                highlightElevation: 5,
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)),
-                elevation: 0,
-                onPressed: () {},
-                child: Container(
-                  height: 45,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          colors: [CustomColors.orange, CustomColors.red])),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Get Started',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
+               WVBasicTextIconButton(
+                 size: ButtonSize.Small,
+                 icon: Icon(Icons.add_a_photo, color: Colors.white,),
+                 onPressed: () {},
+               )
               ],
             ),
           ),
