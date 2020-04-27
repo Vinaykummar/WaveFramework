@@ -1,4 +1,5 @@
 import 'package:flukit/Colors/colors.dart';
+import 'package:flukit/Components/Buttons/GradientTextButton/Gradient_TextButton.dart';
 
 import 'package:flukit/Enums/ButtonEnums/ButtonShapes/button_Shapes.dart';
 import 'package:flukit/Enums/ButtonEnums/ButtonSizes/button_Sizes.dart';
@@ -7,6 +8,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Components/Buttons/BasicTextButton/basic_TextButton.dart';
 import 'Components/Buttons/BasicTextIconButton/basic_TextIconButon.dart';
+import 'Components/Buttons/FlatIconButton/flat_IconButton.dart';
+import 'Components/Buttons/FlatTextButton/flat_TextButton.dart';
+import 'Components/Buttons/FlatTextIconButton/flat_TextIconButton.dart';
+import 'Components/Buttons/GradientIconButton/gradient_IconButton.dart';
+import 'Components/Buttons/GradientTextIconButton/gradient_TextIconButton.dart';
+import 'Components/Buttons/OutlineIconButton/outline_IconButton.dart';
+import 'Components/Buttons/OutlineTextIconButton/Outline_TextIconButton.dart';
 
 
 void main() => runApp(MyApp());
@@ -56,7 +64,10 @@ class MyHomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-               WVBasicTextIconButton(
+               WVOutlineTextIconButton(
+                 width: ButtonWidthType.Block,
+                 shape: ButtonShape.Round,
+                 icon: Icon(Icons.group_add,color: CustomColors.blue,),
                  size: ButtonSize.Large,
                  onPressed: () {},
                )

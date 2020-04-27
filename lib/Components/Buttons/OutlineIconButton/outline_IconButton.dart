@@ -9,20 +9,17 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class WVOutlineIconButton extends StatelessWidget {
-  final ButtonIconAlign iconAlignment;
   final bool enableFeedback;
   final Clip clipBehaviour;
   final Duration animationDuration;
   final Brightness colorBrightness;
   final FocusNode focusNode;
-  final Color textColor;
   final ButtonTextTheme textTheme;
   final Color highlightColor;
   final Color backgroundColor;
   final double cornerRadius;
   final double elevation;
   final double padding;
-  final Text text;
   final ButtonWidthType width;
   final Function onPressed;
   final Function onLongPress;
@@ -41,7 +38,6 @@ class WVOutlineIconButton extends StatelessWidget {
     this.cornerRadius,
     this.elevation = 0,
     this.padding = 10,
-    this.text = ButtonDefaults.buttonText,
     this.width = ButtonDefaults.buttonWidthType,
     this.onPressed,
     this.shape = ButtonDefaults.buttonShape,
@@ -49,7 +45,6 @@ class WVOutlineIconButton extends StatelessWidget {
     this.highlightColor,
     this.textTheme,
     this.onLongPress,
-    this.textColor,
     this.clipBehaviour,
     this.animationDuration,
     this.colorBrightness,
@@ -57,7 +52,6 @@ class WVOutlineIconButton extends StatelessWidget {
     this.onHighlightChanged,
     this.enableFeedback,
     this.icon = ButtonDefaults.basicButtonIcon,
-    this.iconAlignment = ButtonDefaults.buttonIconAlign,
     this.iconSize,
   });
 
@@ -69,23 +63,13 @@ class WVOutlineIconButton extends StatelessWidget {
     ButtonSizes buttonSizes =
         ButtonSizes(buttonSize: this.size, padding: this.padding);
     buttonSizes.checkbuttonSize();
-    this.buttonText = this.text;
     this.buttonIcon = this.icon;
     if (this.buttonText.style != null) {
       this.textStyle =
           this.buttonText.style.copyWith(fontSize: buttonSizes.fontSize);
     }
-    ButtonIconAlignments buttonIconAlignments = ButtonIconAlignments(
-        buttonSize: this.size,
-        textStyle: this.textStyle,
-        buttonText: this.buttonText,
-        buttonIcon: this.icon,
-        iconAlignment: this.iconAlignment);
-    buttonIconAlignments.checkIconAlignment();
 
     return Container(
-      height: buttonSizes.iconButtonHeight,
-      width: buttonSizes.iconButtonWidth,
       padding: EdgeInsets.all(0),
       decoration: BoxDecoration(
         border: Border.all(
@@ -94,6 +78,7 @@ class WVOutlineIconButton extends StatelessWidget {
         shape: BoxShape.rectangle,
       ),
       child: Row(
+        mainAxisSize: buttonWidths.mainAxisSize,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

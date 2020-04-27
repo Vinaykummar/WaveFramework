@@ -20,24 +20,19 @@ class WVFlatTextButton extends StatelessWidget {
   final double elevation;
   final double padding;
   final Text text;
-  final ButtonWidthType width;
   final Function onPressed;
   final Function onLongPress;
   final Function onHighlightChanged;
-  final ButtonShape shape;
-  final ButtonSize size;
-  MainAxisSize mainAxisSize;
   TextStyle textStyle;
   Text buttonText;
+  final ButtonSize size;
 
   WVFlatTextButton({
     this.cornerRadius = 10,
     this.elevation = 0,
     this.padding = 10,
     this.text = ButtonDefaults.buttonOutlineText,
-    this.width = ButtonDefaults.buttonWidthType,
     this.onPressed,
-    this.shape = ButtonDefaults.buttonShape,
     this.size = ButtonDefaults.buttonSize,
     this.highlightColor,
     this.textTheme,
@@ -52,10 +47,7 @@ class WVFlatTextButton extends StatelessWidget {
   });
 
   Widget build(BuildContext context) {
-    ButtonWidths buttonWidths = ButtonWidths(this.width);
-    buttonWidths.checkButtonWidth();
-    ButtonShapes buttonShapes = ButtonShapes(this.shape, this.cornerRadius);
-    buttonShapes.checkButtonShape();
+
     ButtonSizes buttonSizes = ButtonSizes(
         buttonSize: this.size,
         padding: this.padding
@@ -108,7 +100,6 @@ class WVFlatTextButton extends StatelessWidget {
         onPressed: this.onPressed,
         child: Container(
           child: Row(
-            mainAxisSize: buttonWidths.mainAxisSize,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(

@@ -57,8 +57,8 @@ class ButtonSizes {
         this.fontSize = 24;
         this.height = 58;
         this.edgeInsets = EdgeInsets.all(this.padding);
-        this.iconButtonHeight = 82;
-        this.iconButtonWidth = 82;
+        this.iconButtonHeight = 84;
+        this.iconButtonWidth = 84;
         this.iconButtonIconSize = 60;
 
         break;

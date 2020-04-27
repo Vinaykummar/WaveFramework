@@ -9,25 +9,18 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class WVFlatIconButton extends StatelessWidget {
-  final ButtonIconAlign iconAlignment;
   final bool enableFeedback;
   final Clip clipBehaviour;
   final Duration animationDuration;
   final Brightness colorBrightness;
   final FocusNode focusNode;
-  final Color textColor;
   final ButtonTextTheme textTheme;
-  final Color highlightColor;
-  final Color backgroundColor;
-  final double cornerRadius;
   final double elevation;
   final double padding;
-  final Text text;
-  final ButtonWidthType width;
   final Function onPressed;
   final Function onLongPress;
   final Function onHighlightChanged;
-  final ButtonShape shape;
+  final Color highlightColor;
   final ButtonSize size;
   final double iconSize;
   Icon icon;
@@ -37,19 +30,13 @@ class WVFlatIconButton extends StatelessWidget {
   Icon buttonIcon;
 
   WVFlatIconButton({
-    this.backgroundColor = ButtonDefaults.buttonBackgroundColor,
-    this.cornerRadius,
     this.elevation = 0,
     this.padding = 10,
-    this.text = ButtonDefaults.buttonText,
-    this.width = ButtonDefaults.buttonWidthType,
     this.onPressed,
-    this.shape = ButtonDefaults.buttonShape,
     this.size = ButtonDefaults.buttonSize,
     this.highlightColor,
     this.textTheme,
     this.onLongPress,
-    this.textColor,
     this.clipBehaviour,
     this.animationDuration,
     this.colorBrightness,
@@ -57,48 +44,36 @@ class WVFlatIconButton extends StatelessWidget {
     this.onHighlightChanged,
     this.enableFeedback,
     this.icon = ButtonDefaults.basicButtonIcon,
-    this.iconAlignment = ButtonDefaults.buttonIconAlign, this.iconSize,
+    this.iconSize,
   });
 
   Widget build(BuildContext context) {
-    ButtonWidths buttonWidths = ButtonWidths(this.width);
-    buttonWidths.checkButtonWidth();
-    ButtonShapes buttonShapes = ButtonShapes(this.shape, this.cornerRadius);
-    buttonShapes.checkButtonShape();
     ButtonSizes buttonSizes =
-    ButtonSizes(buttonSize: this.size, padding: this.padding);
+        ButtonSizes(buttonSize: this.size, padding: this.padding);
     buttonSizes.checkbuttonSize();
-    this.buttonText = this.text;
     this.buttonIcon = this.icon;
-
-    ButtonIconAlignments buttonIconAlignments = ButtonIconAlignments(
-        buttonSize: this.size,
-        textStyle: this.textStyle,
-        buttonText: this.buttonText,
-        buttonIcon: this.icon,
-        iconAlignment: this.iconAlignment);
-    buttonIconAlignments.checkIconAlignment();
 
     return Container(
       padding: EdgeInsets.all(0),
-      decoration: BoxDecoration(
-
-      ),
+      decoration: BoxDecoration(),
       child: Row(
-        mainAxisSize: buttonWidths.mainAxisSize,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [IconButton(
-          focusNode: this.focusNode,
-          splashColor: Colors.transparent,
-          highlightColor: this.highlightColor,
-          padding: buttonSizes.edgeInsets,
-          color: Colors.white,
-          onPressed: this.onPressed,
-          alignment: Alignment.center,
-          iconSize: this.iconSize == null ? buttonSizes.iconButtonIconSize : this.iconSize,
-          icon: this.icon,
-        )],
+        children: [
+          IconButton(
+            focusNode: this.focusNode,
+            splashColor: Colors.transparent,
+            highlightColor: this.highlightColor,
+            padding: buttonSizes.edgeInsets,
+            color: Colors.white,
+            onPressed: this.onPressed,
+            alignment: Alignment.center,
+            iconSize: this.iconSize == null
+                ? buttonSizes.iconButtonIconSize
+                : this.iconSize,
+            icon: this.icon,
+          )
+        ],
       ),
     );
   }
