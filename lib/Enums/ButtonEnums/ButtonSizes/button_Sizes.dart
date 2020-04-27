@@ -10,6 +10,8 @@ class ButtonSizes {
   double padding;
   double width;
   double iconSize;
+  double socialiconSize;
+
   double iconButtonHeight;
   double iconButtonWidth;
   double iconButtonIconSize;
@@ -28,6 +30,7 @@ class ButtonSizes {
         this.iconButtonHeight = 48;
         this.iconButtonWidth = 48;
         this.iconButtonIconSize = 25;
+
         break;
       case ButtonSize.Small:
         // TODO: Handle this case.

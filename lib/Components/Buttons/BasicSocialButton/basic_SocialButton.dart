@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class WVBasicSocialButton extends StatelessWidget {
-  final ButtonIconAlign iconAlignment;
   final bool enableFeedback;
   final Clip clipBehaviour;
   final Duration animationDuration;
@@ -30,7 +29,6 @@ class WVBasicSocialButton extends StatelessWidget {
   final ButtonShape shape;
   final ButtonSize size;
   Icon icon;
-  MainAxisSize mainAxisSize;
   TextStyle textStyle;
   Text buttonText;
   Icon buttonIcon;
@@ -56,7 +54,6 @@ class WVBasicSocialButton extends StatelessWidget {
     this.onHighlightChanged,
     this.enableFeedback,
     this.icon = ButtonDefaults.basicButtonIcon,
-    this.iconAlignment = ButtonDefaults.buttonIconAlign,
   });
 
   Widget build(BuildContext context) {
@@ -69,24 +66,25 @@ class WVBasicSocialButton extends StatelessWidget {
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;
     this.buttonIcon = this.icon;
-    if(this.buttonText.style == null && this.size == null) {
-      this.textStyle =
-          TextStyle(fontSize: 22);
-    } else if(this.buttonText.style != null && this.size != null){
-      this.textStyle =
-          this.buttonText.style.copyWith(fontSize: buttonSizes.fontSize);
-    } else {
-      this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
-
+ print(this.buttonText.style);
+    try {
+      if(this.buttonText.style == null) {
+        print('no font size by user');
+        if(this.size != null) {
+          print('user provided size');
+          this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
+        }else{
+          print('user not provided size');
+          this.textStyle = TextStyle(fontSize: 22);
+        }
+      } else {
+        print(this.buttonText.style);
+        this.textStyle = this.buttonText.style;
+      }
     }
-
-    ButtonIconAlignments buttonIconAlignments = ButtonIconAlignments(
-        buttonSize: this.size,
-        textStyle: this.textStyle,
-        buttonText: this.buttonText,
-        buttonIcon: this.icon,
-        iconAlignment: this.iconAlignment);
-    buttonIconAlignments.checkIconAlignment();
+    catch (e) {
+      print(e);
+    }
 
     return Container(
       width: buttonSizes.width,
@@ -123,7 +121,7 @@ class WVBasicSocialButton extends StatelessWidget {
               Icon(
                 this.icon.icon, size: this.icon.size,color: this.icon.color,
               ),
-
+              this.width == ButtonWidthType.Block ? SizedBox(width: 15,) : null,
               Text(
                 this.buttonText.data,
                 style: this.textStyle,

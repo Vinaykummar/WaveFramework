@@ -70,15 +70,24 @@ class WVFlatTextIconButton extends StatelessWidget {
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;
     this.buttonIcon = this.icon;
-    if(this.buttonText.style == null && this.size == null) {
-      this.textStyle =
-          TextStyle(fontSize: 22);
-    } else if(this.buttonText.style != null && this.size != null){
-      this.textStyle =
-          this.buttonText.style.copyWith(fontSize: buttonSizes.fontSize);
-    } else {
-      this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
-
+ print(this.buttonText.style);
+    try {
+      if(this.buttonText.style == null) {
+        print('no font size by user');
+        if(this.size != null) {
+          print('user provided size');
+          this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
+        }else{
+          print('user not provided size');
+          this.textStyle = TextStyle(fontSize: 22);
+        }
+      } else {
+        print(this.buttonText.style);
+        this.textStyle = this.buttonText.style;
+      }
+    }
+    catch (e) {
+      print(e);
     }
 
     print(this.icon);
