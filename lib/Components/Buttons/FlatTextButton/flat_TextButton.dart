@@ -63,12 +63,17 @@ class WVFlatTextButton extends StatelessWidget {
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;
 
-    if (this.buttonText.style != null) {
-      this.textStyle = this
-          .buttonText
-          .style
-          .copyWith(fontSize: buttonSizes.fontSize,);
+    if(this.buttonText.style == null && this.size == null) {
+      this.textStyle =
+          TextStyle(fontSize: 22);
+    } else if(this.buttonText.style != null && this.size != null){
+      this.textStyle =
+          this.buttonText.style.copyWith(fontSize: buttonSizes.fontSize);
+    } else {
+      this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
+
     }
+
 
     return Container(
       width: buttonSizes.width,

@@ -70,10 +70,7 @@ class WVFlatIconButton extends StatelessWidget {
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;
     this.buttonIcon = this.icon;
-    if (this.buttonText.style != null) {
-      this.textStyle =
-          this.buttonText.style.copyWith(fontSize: buttonSizes.fontSize);
-    }
+
     ButtonIconAlignments buttonIconAlignments = ButtonIconAlignments(
         buttonSize: this.size,
         textStyle: this.textStyle,

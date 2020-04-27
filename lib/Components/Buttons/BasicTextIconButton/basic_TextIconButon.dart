@@ -69,10 +69,17 @@ class WVBasicTextIconButton extends StatelessWidget {
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;
     this.buttonIcon = this.icon;
-    if (this.buttonText.style != null) {
+    if(this.buttonText.style == null && this.size == null) {
+      this.textStyle =
+          TextStyle(fontSize: 22);
+    } else if(this.buttonText.style != null && this.size != null){
       this.textStyle =
           this.buttonText.style.copyWith(fontSize: buttonSizes.fontSize);
+    } else {
+      this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
+
     }
+
     ButtonIconAlignments buttonIconAlignments = ButtonIconAlignments(
         buttonSize: this.size,
         textStyle: this.textStyle,
