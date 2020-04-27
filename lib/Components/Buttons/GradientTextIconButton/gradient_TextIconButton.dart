@@ -1,5 +1,6 @@
 import 'package:flukit/Colors/colors.dart';
 import 'package:flukit/Constants/defaults.dart';
+import 'package:flukit/Enums/ButtonEnums/ButtonIconAlignment/button_iconAlignment.dart';
 import 'package:flukit/Enums/ButtonEnums/ButtonShapes/button_Shapes.dart';
 import 'package:flukit/Enums/ButtonEnums/ButtonSizes/button_Sizes.dart';
 import 'package:flukit/Enums/ButtonEnums/ButtonWidth/button_Width.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class WVGradientTextButton extends StatelessWidget {
+class WVGradientTextIconButton extends StatelessWidget {
   final Gradient gradient;
 
   final bool enableFeedback;
@@ -32,9 +33,14 @@ class WVGradientTextButton extends StatelessWidget {
   MainAxisSize mainAxisSize;
   TextStyle textStyle;
   Text buttonText;
+  final ButtonIconAlign iconAlignment;
+  Icon icon;
 
-  WVGradientTextButton({
+
+  WVGradientTextIconButton({
     this.gradient = ButtonDefaults.gradient,
+    this.icon = ButtonDefaults.gradientButtonIcon,
+    this.iconAlignment = ButtonDefaults.buttonIconAlign,
     this.backgroundColor = ButtonDefaults.buttonBackgroundColor,
     this.cornerRadius,
     this.elevation = 0,
@@ -61,28 +67,38 @@ class WVGradientTextButton extends StatelessWidget {
     buttonWidths.checkButtonWidth();
     ButtonShapes buttonShapes = ButtonShapes(this.shape, this.cornerRadius);
     buttonShapes.checkButtonShape();
-    ButtonSizes buttonSizes =
-        ButtonSizes(buttonSize: this.size, padding: this.padding);
+    ButtonSizes buttonSizes = ButtonSizes(
+        buttonSize: this.size
+        , padding: this.padding
+    );
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;
 
-    if (this.buttonText.style == null && this.size == null) {
-      this.textStyle = TextStyle(fontSize: 22);
-    } else if (this.buttonText.style != null && this.size != null) {
+    if(this.buttonText.style == null && this.size == null) {
+      this.textStyle =
+          TextStyle(fontSize: 22);
+    } else if(this.buttonText.style != null && this.size != null){
       this.textStyle =
           this.buttonText.style.copyWith(fontSize: buttonSizes.fontSize);
     } else {
       this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
     }
+    ButtonIconAlignments buttonIconAlignments = ButtonIconAlignments(
+        buttonSize: this.size,
+        textStyle: this.textStyle,
+        buttonText: this.buttonText,
+        buttonIcon: this.icon,
+        iconAlignment: this.iconAlignment);
+    buttonIconAlignments.checkIconAlignment();
+
 
     return Container(
       height: buttonSizes.height,
       width: buttonSizes.width,
       decoration: BoxDecoration(
-          borderRadius: this.cornerRadius == null
-              ? BorderRadius.circular(buttonShapes.borderRadius)
-              : BorderRadius.circular(this.cornerRadius),
-          gradient: this.gradient),
+          borderRadius: this.cornerRadius == null ? BorderRadius.circular(buttonShapes.borderRadius) : BorderRadius.circular(this.cornerRadius),
+          gradient: this.gradient
+      ),
       child: MaterialButton(
         enableFeedback: this.enableFeedback,
         hoverElevation: 0,
@@ -101,21 +117,14 @@ class WVGradientTextButton extends StatelessWidget {
         height: buttonSizes.height,
         padding: buttonSizes.edgeInsets,
         shape: RoundedRectangleBorder(
-            borderRadius: this.cornerRadius == null
-                ? BorderRadius.circular(buttonShapes.borderRadius)
-                : BorderRadius.circular(this.cornerRadius)),
+            borderRadius: this.cornerRadius == null ? BorderRadius.circular(buttonShapes.borderRadius) : BorderRadius.circular(this.cornerRadius)),
         elevation: this.elevation,
         onPressed: this.onPressed,
         child: Container(
           child: Row(
             mainAxisSize: buttonWidths.mainAxisSize,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                this.buttonText.data,
-                style: this.textStyle,
-              )
-            ],
+            children: buttonIconAlignments.icons,
           ),
         ),
       ),

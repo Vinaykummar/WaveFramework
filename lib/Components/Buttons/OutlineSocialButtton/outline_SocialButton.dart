@@ -1,5 +1,6 @@
 import 'package:flukit/Colors/colors.dart';
 import 'package:flukit/Constants/defaults.dart';
+import 'package:flukit/Enums/ButtonEnums/ButtonIconAlignment/button_iconAlignment.dart';
 import 'package:flukit/Enums/ButtonEnums/ButtonShapes/button_Shapes.dart';
 import 'package:flukit/Enums/ButtonEnums/ButtonSizes/button_Sizes.dart';
 import 'package:flukit/Enums/ButtonEnums/ButtonWidth/button_Width.dart';
@@ -7,9 +8,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class WVGradientTextButton extends StatelessWidget {
-  final Gradient gradient;
-
+class WVOutlineSocialButton extends StatelessWidget {
+  final ButtonIconAlign iconAlignment;
+  final BorderSide border;
   final bool enableFeedback;
   final Clip clipBehaviour;
   final Duration animationDuration;
@@ -18,7 +19,6 @@ class WVGradientTextButton extends StatelessWidget {
   final Color textColor;
   final ButtonTextTheme textTheme;
   final Color highlightColor;
-  final Color backgroundColor;
   final double cornerRadius;
   final double elevation;
   final double padding;
@@ -29,18 +29,18 @@ class WVGradientTextButton extends StatelessWidget {
   final Function onHighlightChanged;
   final ButtonShape shape;
   final ButtonSize size;
+  Icon icon;
   MainAxisSize mainAxisSize;
   TextStyle textStyle;
   Text buttonText;
+  Icon buttonIcon;
 
-  WVGradientTextButton({
-    this.gradient = ButtonDefaults.gradient,
-    this.backgroundColor = ButtonDefaults.buttonBackgroundColor,
+  WVOutlineSocialButton({
     this.cornerRadius,
     this.elevation = 0,
     this.padding = 10,
-    this.text = ButtonDefaults.buttonText,
-    this.width = ButtonWidthType.FullWidth,
+    this.text = ButtonDefaults.socialOutlineText,
+    this.width = ButtonDefaults.buttonWidthType,
     this.onPressed,
     this.shape = ButtonDefaults.buttonShape,
     this.size = ButtonDefaults.buttonSize,
@@ -54,6 +54,8 @@ class WVGradientTextButton extends StatelessWidget {
     this.focusNode,
     this.onHighlightChanged,
     this.enableFeedback,
+    this.icon = ButtonDefaults.outlineButtonIcon,
+    this.iconAlignment = ButtonDefaults.buttonIconAlign, this.border = ButtonDefaults.borderSide,
   });
 
   Widget build(BuildContext context) {
@@ -62,27 +64,31 @@ class WVGradientTextButton extends StatelessWidget {
     ButtonShapes buttonShapes = ButtonShapes(this.shape, this.cornerRadius);
     buttonShapes.checkButtonShape();
     ButtonSizes buttonSizes =
-        ButtonSizes(buttonSize: this.size, padding: this.padding);
+    ButtonSizes(buttonSize: this.size, padding: this.padding);
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;
-
-    if (this.buttonText.style == null && this.size == null) {
-      this.textStyle = TextStyle(fontSize: 22);
-    } else if (this.buttonText.style != null && this.size != null) {
+    this.buttonIcon = this.icon;
+    if(this.buttonText.style == null && this.size == null) {
+      this.textStyle =
+          TextStyle(fontSize: 22);
+    } else if(this.buttonText.style != null && this.size != null){
       this.textStyle =
           this.buttonText.style.copyWith(fontSize: buttonSizes.fontSize);
     } else {
       this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
+
     }
 
+    ButtonIconAlignments buttonIconAlignments = ButtonIconAlignments(
+        buttonSize: this.size,
+        textStyle: this.textStyle,
+        buttonText: this.buttonText,
+        buttonIcon: this.icon,
+        iconAlignment: this.iconAlignment);
+    buttonIconAlignments.checkIconAlignment();
+
     return Container(
-      height: buttonSizes.height,
       width: buttonSizes.width,
-      decoration: BoxDecoration(
-          borderRadius: this.cornerRadius == null
-              ? BorderRadius.circular(buttonShapes.borderRadius)
-              : BorderRadius.circular(this.cornerRadius),
-          gradient: this.gradient),
       child: MaterialButton(
         enableFeedback: this.enableFeedback,
         hoverElevation: 0,
@@ -101,20 +107,29 @@ class WVGradientTextButton extends StatelessWidget {
         height: buttonSizes.height,
         padding: buttonSizes.edgeInsets,
         shape: RoundedRectangleBorder(
-            borderRadius: this.cornerRadius == null
-                ? BorderRadius.circular(buttonShapes.borderRadius)
-                : BorderRadius.circular(this.cornerRadius)),
+            side:  BorderSide(
+                color: this.border.color,
+                style: this.border.style,
+                width: 2
+            ),
+            borderRadius: this.cornerRadius != null
+                ? BorderRadius.circular(this.cornerRadius)
+                : BorderRadius.circular(buttonShapes.borderRadius)),
         elevation: this.elevation,
         onPressed: this.onPressed,
         child: Container(
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: buttonWidths.mainAxisSize,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              Icon(
+                this.icon.icon, size: this.icon.size,color: this.icon.color,
+              ),
               Text(
                 this.buttonText.data,
                 style: this.textStyle,
-              )
+              ),
             ],
           ),
         ),

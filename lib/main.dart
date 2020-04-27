@@ -1,5 +1,6 @@
 import 'package:flukit/Colors/colors.dart';
 import 'package:flukit/Components/Buttons/BasicIconButton/basic_IconButton.dart';
+import 'package:flukit/Components/Buttons/BasicSocialButton/basic_SocialButton.dart';
 import 'package:flukit/Components/Buttons/BasicTextButton/basic_TextButton.dart';
 import 'package:flukit/Components/Buttons/FlatIconButton/flat_IconButton.dart';
 import 'package:flukit/Components/Buttons/FlatTextButton/flat_TextButton.dart';
@@ -14,8 +15,11 @@ import 'package:flutter/material.dart';
 
 import 'Components/Buttons/BasicTextIconButton/basic_TextIconButon.dart';
 import 'Components/Buttons/FlatTextIconButton/flat_TextIconButton.dart';
+import 'Components/Buttons/GradientIconButton/gradient_IconButton.dart';
 import 'Components/Buttons/GradientTextButton/Gradient_TextButton.dart';
+import 'Components/Buttons/GradientTextIconButton/gradient_TextIconButton.dart';
 import 'Components/Buttons/OutlineIconButton/outline_IconButton.dart';
+import 'Components/Buttons/OutlineSocialButtton/outline_SocialButton.dart';
 import 'Components/Buttons/OutlineTextButton/outline_TextButton.dart';
 import 'Components/Buttons/OutlineTextIconButton/Outline_TextIconButton.dart';
 
@@ -66,11 +70,20 @@ class MyHomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-               WVBasicTextIconButton(
-                 size: ButtonSize.Small,
-                 icon: Icon(Icons.add_a_photo, color: Colors.white,),
-                 onPressed: () {},
-               )
+
+                WVBasicSocialButton(
+                  backgroundColor: CustomColors.blueAccent,
+                  icon: Icon(Icons.fiber_smart_record, color: Colors.white,),
+                  text: Text("Sign in with Facebook", style: TextStyle(color: Colors.white),),
+                  size: ButtonSize.Medium,shape: ButtonShape.Cornered,
+                  onPressed: () {},
+                ),
+                SizedBox(height: 20,),
+                WVOutlineSocialButton(
+                  icon: Icon(Icons.fiber_smart_record, color: CustomColors.blueAccent,),
+                  size: ButtonSize.Medium,shape: ButtonShape.Cornered,
+                  onPressed: () {},
+                )
               ],
             ),
           ),
