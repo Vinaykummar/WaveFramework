@@ -124,7 +124,7 @@ class WVOutlineTextIconButton extends StatelessWidget {
             side: BorderSide(
               color: this.border.color,
               style: this.border.style,
-              width: 2
+              width: this.border.width
             ),
             borderRadius: this.cornerRadius != null
                 ? BorderRadius.circular(this.cornerRadius)

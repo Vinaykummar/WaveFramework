@@ -30,6 +30,7 @@ class WVOutlineIconButton extends StatelessWidget {
   final ButtonShape shape;
   final ButtonSize size;
   final double iconSize;
+  final BoxBorder border;
   Icon icon;
   MainAxisSize mainAxisSize;
   TextStyle textStyle;
@@ -58,7 +59,7 @@ class WVOutlineIconButton extends StatelessWidget {
     this.enableFeedback,
     this.icon = ButtonDefaults.basicButtonIcon,
     this.iconAlignment = ButtonDefaults.buttonIconAlign,
-    this.iconSize,
+    this.iconSize, this.border,
   });
 
   Widget build(BuildContext context) {
@@ -88,8 +89,7 @@ class WVOutlineIconButton extends StatelessWidget {
       width: buttonSizes.iconButtonWidth,
       padding: EdgeInsets.all(0),
       decoration: BoxDecoration(
-        border: Border.all(
-            style: BorderStyle.solid, width: 2, color: this.backgroundColor),
+        border: this.border,
         borderRadius: BorderRadius.circular(buttonShapes.borderRadius),
         shape: BoxShape.rectangle,
       ),
