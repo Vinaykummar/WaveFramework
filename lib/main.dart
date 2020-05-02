@@ -1,11 +1,12 @@
 import 'package:flukit/Colors/colors.dart';
-import 'package:flukit/Components/AppBars/BasicAppBar/BasicAppBar.dart';
+import 'package:flukit/Components/Avatars/BasicAvatar/BasicAvatar.dart';
+import 'package:flukit/Constants/defaults.dart';
+import 'package:flukit/Enums/Avatars/AvatarEnums.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Components/AppBars/ProfileAppBar/ProfileIconAppBar.dart';
-import 'Components/AppBars/ThreeIconAppBar/ThreeIconAppBar.dart';
-import 'Components/AppBars/test.dart';
 
+import 'Components/AppBars/test.dart';
+import 'Components/Avatars/BorderAvatar/BorderAvatar.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
           primarySwatch: Colors.blue, primaryColor: CustomColors.indigo),
@@ -32,10 +34,29 @@ class MyHomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          child: ProfileIconAppBar(),
-          preferredSize: Size.fromHeight(60),
+          child: TextIconAppBar(
+            action: Avatar(
+              enableOnlineStatus: true,
+              onlineStatusColor: CustomColors.blue,
+              avatarShape: AvatarShape.Circle,
+              avatarBorderType: AvatarBorderType.Plain,
+              image: AppBarDefaults.avatarImage,
+              imageHeight: AppBarDefaults.avatarImageHeight,
+              imageWidth: AppBarDefaults.avatarImageWidth,
+              onAvatarTap: () {},
+            ),
+              padding: 8,
+              title: Text(
+                "Netflix",
+                style: TextStyle(
+                    fontFamily: 'gilroy',
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: CustomColors.red),
+              ),
+          ),
+          preferredSize: Size.fromHeight(100),
         ),
-        backgroundColor: Colors.white,
         body: Padding(
           padding: EdgeInsets.all(10),
           child: Container(
@@ -44,26 +65,7 @@ class MyHomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                PreferredSize(
-                  child: ProfileIconAppBar(),
-                  preferredSize: Size.fromHeight(60),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                PreferredSize(
-                  child: ThreeIconAppBar(),
-                  preferredSize: Size.fromHeight(60),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                PreferredSize(
-                  child: AppsBar(),
-                  preferredSize: Size.fromHeight(60),
-                ),
-              ],
+              children: [],
             ),
           ),
         ),
@@ -72,5 +74,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
-

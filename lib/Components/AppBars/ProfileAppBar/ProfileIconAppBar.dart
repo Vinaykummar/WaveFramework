@@ -22,7 +22,7 @@ class ProfileIconAppBar extends StatelessWidget {
           Expanded(
             child: Container(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Stack(
