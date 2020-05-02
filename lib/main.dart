@@ -1,14 +1,11 @@
 import 'package:flukit/Colors/colors.dart';
-
-import 'package:flukit/Enums/ButtonEnums/ButtonShapes/button_Shapes.dart';
-import 'package:flukit/Enums/ButtonEnums/ButtonSizes/button_Sizes.dart';
-import 'package:flukit/Enums/ButtonEnums/ButtonWidth/button_Width.dart';
+import 'package:flukit/Components/AppBars/BasicAppBar/BasicAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Components/AppBars/BasicAppBar/BasicAppBar.dart';
-import 'Components/AppBars/ProfileAppBar/ProfileAppBar.dart';
-import 'Components/Buttons/BasicTextButton/basic_TextButton.dart';
-import 'Components/Buttons/BasicTextIconButton/basic_TextIconButon.dart';
+import 'Components/AppBars/ProfileAppBar/ProfileIconAppBar.dart';
+import 'Components/AppBars/ThreeIconAppBar/ThreeIconAppBar.dart';
+import 'Components/AppBars/test.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -35,7 +32,7 @@ class MyHomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          child: ProfileAppBar(),
+          child: ProfileIconAppBar(),
           preferredSize: Size.fromHeight(60),
         ),
         backgroundColor: Colors.white,
@@ -45,13 +42,27 @@ class MyHomePage extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                WVBasicTextIconButton(
-                  size: ButtonSize.Large,
-                  onPressed: () {},
-                )
+                PreferredSize(
+                  child: ProfileIconAppBar(),
+                  preferredSize: Size.fromHeight(60),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                PreferredSize(
+                  child: ThreeIconAppBar(),
+                  preferredSize: Size.fromHeight(60),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                PreferredSize(
+                  child: AppsBar(),
+                  preferredSize: Size.fromHeight(60),
+                ),
               ],
             ),
           ),
@@ -61,3 +72,5 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+

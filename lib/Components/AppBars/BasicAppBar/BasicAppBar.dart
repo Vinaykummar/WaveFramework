@@ -19,7 +19,7 @@ class BasicAppBar extends StatelessWidget {
           Expanded(
             child: Icon(
               Icons.menu,
-              color: CustomColors.black,
+              color: CustomColors.red,
               size: 28,
             ),
           ),
@@ -31,23 +31,24 @@ class BasicAppBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "Groove Music",
+                      "Netflix",
                       style: TextStyle(
                           fontFamily: 'gilroy',
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                          color: CustomColors.black),
+                          color: CustomColors.red),
                     ),
                   ],
                 ),
               )),
           Expanded(
               child: Container(
-                margin: EdgeInsets.all(3),
                 child: Stack(
                   alignment: Alignment.bottomRight,
                   children: <Widget>[
                     Container(
+                      height: 40,
+                      width: 40,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.cover,

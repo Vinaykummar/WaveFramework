@@ -6,6 +6,7 @@ class ProfileAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 60,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
           border: Border(
@@ -19,67 +20,58 @@ class ProfileAppBar extends StatelessWidget {
           Expanded(
             child: Container(
               margin: EdgeInsets.all(3),
-              child: Stack(
-                alignment: Alignment.bottomRight,
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: new NetworkImage(
-                              'https://images.pexels.com/photos/838875/pexels-photo-838875.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')),
-                      color: CustomColors.blue,
-                      shape: BoxShape.circle,
-                    ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+
+                  SizedBox(
+                    width: 20,
                   ),
-                  Container(
-                    height: 14,
-                    width: 14,
-                    decoration: BoxDecoration(
-                        color: CustomColors.green, shape: BoxShape.circle),
-                  ),
+
                 ],
               ),
             ),
           ),
           Expanded(
-              flex: 4,
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "Groove Music",
-                      style: TextStyle(
-                          fontFamily: 'gilroy',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                          color: CustomColors.black),
-                    ),
-                  ],
-                ),
-              )),
-          Expanded(
             flex: 2,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Icon(
-                  Icons.add_shopping_cart,
-                  color: CustomColors.black,
-                  size: 28,
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Icon(
-                  Icons.search,
-                  color: CustomColors.black,
-                  size: 28,
-                )
-              ],
+            child: Container(
+              color: CustomColors.red,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [Text(
+                  "Netflix",
+                  style: TextStyle(
+                      fontFamily: 'gilroy',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28,
+                      color: CustomColors.red),
+                )],
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: CustomColors.purple,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Icon(
+                    Icons.add_shopping_cart,
+                    color: CustomColors.red,
+                    size: 28,
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Icon(
+                    Icons.search,
+                    color: CustomColors.red,
+                    size: 28,
+                  )
+                ],
+              ),
             ),
           )
         ],

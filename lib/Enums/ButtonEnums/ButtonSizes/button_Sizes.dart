@@ -45,7 +45,6 @@ class ButtonSizes {
       case ButtonSize.Medium:
         // TODO: Handle this case.
         this.fontSize = 22;
-        this.
         height = 50;
         this.edgeInsets = EdgeInsets.all(this.padding);
         this.iconButtonHeight = 72;
