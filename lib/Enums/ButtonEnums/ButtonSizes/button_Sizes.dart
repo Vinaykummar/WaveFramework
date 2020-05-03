@@ -27,10 +27,9 @@ class ButtonSizes {
         this.height = 28;
         this.edgeInsets = EdgeInsets.all(0);
         this.width = 75;
-        this.iconButtonHeight = 48;
-        this.iconButtonWidth = 48;
+        this.iconButtonHeight = 45;
+        this.iconButtonWidth = 45;
         this.iconButtonIconSize = 25;
-
         break;
       case ButtonSize.Small:
         // TODO: Handle this case.

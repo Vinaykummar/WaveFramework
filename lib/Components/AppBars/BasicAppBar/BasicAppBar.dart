@@ -1,76 +1,75 @@
 import 'package:flukit/Colors/colors.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flukit/Constants/defaults.dart';
 import 'package:flutter/material.dart';
 
 class BasicAppBar extends StatelessWidget {
+  final Widget title;
+  final BorderSide bottomBorder;
+  final Color backgroundColor;
+  final double padding;
+    final List<Widget> actions;
+  final Widget leading;
+
+  BasicAppBar(
+      {Key key,
+      this.title,
+      this.bottomBorder,
+      this.backgroundColor = Colors.white,
+      this.padding = 8,
+      this.actions,
+      this.leading})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(
-        color: CustomColors.black.withOpacity(0.5),
-        style: BorderStyle.solid,
-        width: 0.3,
-      ))),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Icon(
-              Icons.menu,
-              color: CustomColors.red,
-              size: 28,
-            ),
-          ),
-          Expanded(
-              flex: 5,
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "Netflix",
-                      style: TextStyle(
-                          fontFamily: 'gilroy',
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: CustomColors.red),
+    return Material(
+      color: this.backgroundColor,
+      child: Container(
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+            border: Border(
+              bottom: this.bottomBorder != null
+                  ? this.bottomBorder
+                  : BorderSide(
+                      color: CustomColors.black.withOpacity(0.5),
+                      style: BorderStyle.solid,
+                      width: 0.3,
                     ),
-                  ],
+            )),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [this.leading != null
+                        ? this.leading
+                        : AppBarDefaults().appBarLeading],
+                  ),
                 ),
-              )),
-          Expanded(
-              child: Container(
-                child: Stack(
-                  alignment: Alignment.bottomRight,
-                  children: <Widget>[
-                    Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: new NetworkImage(
-                                  'https://images.pexels.com/photos/838875/pexels-photo-838875.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')),
-                          color: CustomColors.blue,
-                          shape: BoxShape.circle,
-                      ),
-                    ),
-                    Container(
-                      height: 14,
-                      width: 14,
-                      decoration: BoxDecoration(
-                          color: CustomColors.green,
-                          shape: BoxShape.circle
-                      ),
-                    ),
-                  ],
                 ),
+            Expanded(
 
-          ))
-        ],
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      this.title != null ? this.title : AppBarDefaults.brandName
+                    ],
+                  ),
+                )),
+            Expanded(
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: this.actions != null
+                      ? this.actions
+                      : AppBarDefaults().appBarActions,
+                ),
+              ),)
+          ],
+        ),
       ),
     );
   }

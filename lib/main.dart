@@ -1,12 +1,20 @@
 import 'package:flukit/Colors/colors.dart';
-import 'package:flukit/Components/Avatars/BasicAvatar/BasicAvatar.dart';
+import 'package:flukit/Components/AppBars/BackNavAppBar/BackNavAppBar.dart';
+import 'package:flukit/Components/AppBars/ProfileAppBar/ProfileIconAppBar.dart';
+import 'package:flukit/Components/AppBars/TextAvatarAppBar/TextAvatarAppBar.dart';
+import 'package:flukit/Components/AppBars/ThreeIconAppBar/ThreeIconAppBar.dart';
+import 'package:flukit/Components/Buttons/BasicIconButton/basic_IconButton.dart';
+import 'package:flukit/Components/Buttons/FlatIconButton/flat_IconButton.dart';
 import 'package:flukit/Constants/defaults.dart';
 import 'package:flukit/Enums/Avatars/AvatarEnums.dart';
+import 'package:flukit/Enums/ButtonEnums/ButtonShapes/button_Shapes.dart';
+import 'package:flukit/Enums/ButtonEnums/ButtonSizes/button_Sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Components/AppBars/BasicAppBar/BasicAppBar.dart';
 import 'Components/AppBars/test.dart';
-import 'Components/Avatars/BorderAvatar/BorderAvatar.dart';
+import 'Components/Avatars/Avatar/Avatar.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,28 +42,42 @@ class MyHomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          child: TextIconAppBar(
-            action: Avatar(
+          child: TextAvatarAppBar(
+            title: Avatar(
+              onlineStatusColor: CustomColors.red,
+              statusIconHeight: 15,
+              statusIconWidth: 15,
               enableOnlineStatus: true,
-              onlineStatusColor: CustomColors.blue,
               avatarShape: AvatarShape.Circle,
               avatarBorderType: AvatarBorderType.Plain,
               image: AppBarDefaults.avatarImage,
-              imageHeight: AppBarDefaults.avatarImageHeight,
-              imageWidth: AppBarDefaults.avatarImageWidth,
+              imageHeight: 40,
+              imageWidth: 40,
               onAvatarTap: () {},
             ),
-              padding: 8,
-              title: Text(
-                "Netflix",
-                style: TextStyle(
-                    fontFamily: 'gilroy',
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: CustomColors.red),
+            actions: <Widget>[
+              WVBasicIconButton(
+                shape: ButtonShape.Round,
+                size: ButtonSize.Mini,
+                backgroundColor: CustomColors.purple.withOpacity(0.1),
+                icon : Icon(
+                  Icons.person_add,
+                  color:CustomColors.purple,
+                ),
               ),
+              SizedBox(width: 10,),
+              WVBasicIconButton(
+                shape: ButtonShape.Round,
+                size: ButtonSize.Mini,
+                backgroundColor: CustomColors.blue.withOpacity(0.1),
+                icon : Icon(
+                  Icons.chat_bubble,
+                  color:CustomColors.blue,
+                ),
+              )
+            ],
           ),
-          preferredSize: Size.fromHeight(100),
+          preferredSize: Size.fromHeight(65),
         ),
         body: Padding(
           padding: EdgeInsets.all(10),
@@ -65,7 +87,15 @@ class MyHomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [],
+              children: [
+                ThreeIconAppBar(),
+                SizedBox(height: 20,),
+                TextAvatarAppBar(),
+                SizedBox(height: 20,),
+                BasicAppBar(),
+                SizedBox(height: 20,),
+                BackNavAppBar(),
+              ],
             ),
           ),
         ),

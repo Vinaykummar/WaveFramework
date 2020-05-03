@@ -65,21 +65,16 @@ class WVBasicIconButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(buttonShapes.borderRadius),
         shape: BoxShape.rectangle,
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          IconButton(
-          focusNode: this.focusNode,
-          splashColor: Colors.transparent,
-          highlightColor: this.highlightColor,
-          padding: buttonSizes.edgeInsets,
-          color: Colors.white,
-          onPressed: this.onPressed,
-          alignment: Alignment.center,
-          iconSize: this.iconSize == null ? buttonSizes.iconButtonIconSize : this.iconSize,
-          icon: this.icon,
-          )],
+      child: IconButton(
+      focusNode: this.focusNode,
+      splashColor: Colors.transparent,
+      highlightColor: this.highlightColor,
+      padding: buttonSizes.edgeInsets,
+      color: Colors.white,
+      onPressed: this.onPressed,
+      alignment: Alignment.center,
+      iconSize: this.iconSize == null ? buttonSizes.iconButtonIconSize : this.iconSize,
+      icon: this.icon,
       ),
     );
   }

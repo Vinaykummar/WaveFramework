@@ -1,24 +1,21 @@
 import 'package:flukit/Colors/colors.dart';
-import 'package:flukit/Components/Avatars/BasicAvatar/BasicAvatar.dart';
-import 'package:flukit/Components/Avatars/OnlineAvatar/OnlineAvatar.dart';
 import 'package:flukit/Constants/defaults.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextIconAppBar extends StatelessWidget {
-  final Text title;
+  final Widget title;
   final BorderSide bottomBorder;
   final Color backgroundColor;
   final double padding;
-  final Widget action;
+    final List<Widget> actions;
 
   TextIconAppBar(
       {this.title,
       this.bottomBorder,
       this.backgroundColor = Colors.white,
       this.padding = 8,
-      this.action})
-      : assert(action != null);
+      this.actions});
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +27,9 @@ class TextIconAppBar extends StatelessWidget {
             bottom: this.bottomBorder != null
                 ? this.bottomBorder
                 : BorderSide(
-                    color: CustomColors.black.withOpacity(0),
+                    color: CustomColors.black.withOpacity(0.5),
                     style: BorderStyle.solid,
-                    width: 0,
+                    width: 0.3,
                   ),
           )),
       child: Row(
@@ -43,7 +40,7 @@ class TextIconAppBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  this.title != null ? this.title : AppBarDefaults.brandTitle
+                  this.title != null ? this.title : AppBarDefaults.brandName
                 ],
               ),
             ),
@@ -52,7 +49,11 @@ class TextIconAppBar extends StatelessWidget {
             child: Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[this.action],
+                children: <Widget>[
+                  this.actions != null
+                      ? this.actions
+                      : AppBarDefaults().appBarAction
+                ],
               ),
             ),
           ),
