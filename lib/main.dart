@@ -1,5 +1,12 @@
 import 'package:flukit/Colors/colors.dart';
 import 'package:flukit/Components/AppBars/BackNavAppBar/BackNavAppBar.dart';
+import 'package:flukit/Components/AppBars/CustomAppBars/BasicAppBar1.dart';
+import 'package:flukit/Components/AppBars/CustomAppBars/LocationAppBar1.dart';
+import 'package:flukit/Components/AppBars/CustomAppBars/UserProfileAppBar.dart';
+import 'package:flukit/Components/AppBars/CustomAppBars/VerticalUserProfileAppBar.dart';
+import 'package:flukit/Components/AppBars/DefaultAppBars/BasicItemAppBar/BasicItemAppBar.dart';
+import 'package:flukit/Components/AppBars/DefaultAppBars/MultipleItemAppBar/MultipleItemAppBar.dart';
+import 'package:flukit/Components/AppBars/DefaultAppBars/TextItemAppBar/TextItemAppBar.dart';
 import 'package:flukit/Components/AppBars/ProfileAppBar/ProfileIconAppBar.dart';
 import 'package:flukit/Components/AppBars/TextAvatarAppBar/TextAvatarAppBar.dart';
 import 'package:flukit/Components/AppBars/ThreeIconAppBar/ThreeIconAppBar.dart';
@@ -13,6 +20,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Components/AppBars/BasicAppBar/BasicAppBar.dart';
+import 'Components/AppBars/CustomAppBars/BasicAppBar2.dart';
+import 'Components/AppBars/CustomAppBars/HorizontalUserProfileAppBar.dart';
+import 'Components/AppBars/CustomAppBars/LocationAppBar2.dart';
+import 'Components/AppBars/CustomAppBars/LocationAppBar3.dart';
 import 'Components/AppBars/test.dart';
 import 'Components/Avatars/Avatar/Avatar.dart';
 
@@ -42,42 +53,8 @@ class MyHomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          child: TextAvatarAppBar(
-            title: Avatar(
-              onlineStatusColor: CustomColors.red,
-              statusIconHeight: 15,
-              statusIconWidth: 15,
-              enableOnlineStatus: true,
-              avatarShape: AvatarShape.Circle,
-              avatarBorderType: AvatarBorderType.Plain,
-              image: AppBarDefaults.avatarImage,
-              imageHeight: 40,
-              imageWidth: 40,
-              onAvatarTap: () {},
-            ),
-            actions: <Widget>[
-              WVBasicIconButton(
-                shape: ButtonShape.Round,
-                size: ButtonSize.Mini,
-                backgroundColor: CustomColors.purple.withOpacity(0.1),
-                icon : Icon(
-                  Icons.person_add,
-                  color:CustomColors.purple,
-                ),
-              ),
-              SizedBox(width: 10,),
-              WVBasicIconButton(
-                shape: ButtonShape.Round,
-                size: ButtonSize.Mini,
-                backgroundColor: CustomColors.blue.withOpacity(0.1),
-                icon : Icon(
-                  Icons.chat_bubble,
-                  color:CustomColors.blue,
-                ),
-              )
-            ],
-          ),
-          preferredSize: Size.fromHeight(65),
+          child: VerticalUserProfileAppBar(),
+          preferredSize: Size.fromHeight(70),
         ),
         body: Padding(
           padding: EdgeInsets.all(10),
@@ -88,13 +65,25 @@ class MyHomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ThreeIconAppBar(),
-                SizedBox(height: 20,),
-                TextAvatarAppBar(),
-                SizedBox(height: 20,),
-                BasicAppBar(),
-                SizedBox(height: 20,),
-                BackNavAppBar(),
+                Container(
+                  height: 100,
+                  color: CustomColors.black,
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          color: CustomColors.blue,
+                          child: Text('PaloAlto, United States Of America',overflow: TextOverflow.ellipsis,),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          color: CustomColors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
