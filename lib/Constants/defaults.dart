@@ -7,7 +7,7 @@ import 'package:flukit/Enums/button_width.dart';
 import 'package:flutter/material.dart';
 
 class ButtonDefaults {
-  static const Text socialbuttonText = Text('Sign in with Google', style: TextStyle(color: Colors.white,fontSize: 22),);
+  static const Text socialbuttonText = Text('Sign in Google', style: TextStyle(color: Colors.white,fontSize: 22),);
   static const Text buttonOutlineText = Text('Sample Button', style: TextStyle(color: CustomColors.blue,fontSize: 22),);
   static const Text socialOutlineText = Text('Sign in with Google', style: TextStyle(color: CustomColors.blue,fontSize: 22),);
   static const Text buttonText = Text('Sample Button', style: TextStyle(color: Colors.white,fontSize: 22),);
