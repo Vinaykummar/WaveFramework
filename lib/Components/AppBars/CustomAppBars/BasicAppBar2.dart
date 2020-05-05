@@ -9,7 +9,7 @@ class BasicAppBar2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return BasicItemAppBar(
       title: Text(
-        'Subscriptions',
+        'contacts',
         style: TextStyle(
             fontFamily: 'gilroy',
             fontSize: 24,

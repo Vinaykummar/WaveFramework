@@ -9,6 +9,7 @@ class LocationAppBar1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextItemAppBar(
       title:LocationAndSubtitle(
+        spacing: 10,
         leadingIcon: Icon(
           Icons.location_on,
           color: CustomColors.red,

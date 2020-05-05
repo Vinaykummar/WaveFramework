@@ -18,9 +18,9 @@ class HorizontalUserProfile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          this.leadingIcon,
+          this.leadingIcon != null ? this.leadingIcon : SizedBox.shrink(),
           SizedBox(width: this.spacing,),
-          this.title,
+          this.title != null ? this.title : SizedBox.shrink(),
         ],
       ),
     );

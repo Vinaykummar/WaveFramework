@@ -2,7 +2,7 @@ import 'package:flukit/Colors/colors.dart';
 import 'package:flukit/Constants/defaults.dart';
 import 'package:flutter/material.dart';
 
-class MultipleItemAppBar extends StatelessWidget {
+class MultipleItemAppBar extends StatelessWidget implements PreferredSize{
   final Widget title;
   final BorderSide bottomBorder;
   final Color backgroundColor;
@@ -10,17 +10,18 @@ class MultipleItemAppBar extends StatelessWidget {
   final List<Widget> actions;
   final bool centerTitle;
   final Widget leading;
+  final Size preferredSize;
 
   MultipleItemAppBar(
       {Key key,
         this.title,
         this.bottomBorder,
         this.backgroundColor = Colors.white,
-        this.padding = 8,
+        this.padding = 5,
         this.actions,
         this.leading,
-        this.centerTitle = true})
-      : super(key: key);
+        this.centerTitle = false})
+      : preferredSize = Size.fromHeight(60);
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +41,21 @@ class MultipleItemAppBar extends StatelessWidget {
             )),
         child: Row(
           children: <Widget>[
-            Expanded(
-              child: Container(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: this.centerTitle == true
-                      ? MainAxisAlignment.spaceBetween
-                      : MainAxisAlignment.start,
-                  children: [
-                    this.leading != null
-                        ? this.leading
-                        : AppBarDefaults().appBarLeading,
-                    SizedBox(width: 5,),
-                    this.title != null ? this.title : AppBarDefaults.brandName
-                  ],
-                ),
+
+
+            Container(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: this.centerTitle == true
+                    ? MainAxisAlignment.spaceBetween
+                    : MainAxisAlignment.start,
+                children: [
+                  this.leading != null
+                      ? this.leading
+                      : SizedBox.shrink(),
+                  SizedBox(width: 5,),
+                  this.title != null ? this.title : SizedBox.shrink()
+                ],
               ),
             ),
             Expanded(
@@ -64,7 +65,7 @@ class MultipleItemAppBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: this.actions != null
                       ? this.actions
-                      : AppBarDefaults().appBarActions,
+                      : [SizedBox.shrink()],
                 ),
               ),
             )
@@ -73,4 +74,8 @@ class MultipleItemAppBar extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  // TODO: implement child
+  Widget get child => null;
 }

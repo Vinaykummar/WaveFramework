@@ -1,31 +1,31 @@
 import 'package:flukit/Colors/colors.dart';
-import 'package:flukit/Components/AppBars/BackNavAppBar/BackNavAppBar.dart';
+import 'package:flukit/Components/AppBars/AppBarWidgets/UserProfileSubtitle.dart';
 import 'package:flukit/Components/AppBars/CustomAppBars/BasicAppBar1.dart';
+import 'package:flukit/Components/AppBars/CustomAppBars/BasicAppBar2.dart';
+import 'package:flukit/Components/AppBars/CustomAppBars/HorizontalUserProfileAppBar.dart';
 import 'package:flukit/Components/AppBars/CustomAppBars/LocationAppBar1.dart';
+import 'package:flukit/Components/AppBars/CustomAppBars/LocationAppBar2.dart';
+import 'package:flukit/Components/AppBars/CustomAppBars/LocationAppBar3.dart';
 import 'package:flukit/Components/AppBars/CustomAppBars/UserProfileAppBar.dart';
 import 'package:flukit/Components/AppBars/CustomAppBars/VerticalUserProfileAppBar.dart';
 import 'package:flukit/Components/AppBars/DefaultAppBars/BasicItemAppBar/BasicItemAppBar.dart';
-import 'package:flukit/Components/AppBars/DefaultAppBars/MultipleItemAppBar/MultipleItemAppBar.dart';
+import 'package:flukit/Components/AppBars/DefaultAppBars/BottomAppBar/BottomAppBar.dart';
+import 'package:flukit/Components/AppBars/DefaultAppBars/SearchAppBar/SearchAppBar.dart';
 import 'package:flukit/Components/AppBars/DefaultAppBars/TextItemAppBar/TextItemAppBar.dart';
-import 'package:flukit/Components/AppBars/ProfileAppBar/ProfileIconAppBar.dart';
-import 'package:flukit/Components/AppBars/TextAvatarAppBar/TextAvatarAppBar.dart';
-import 'package:flukit/Components/AppBars/ThreeIconAppBar/ThreeIconAppBar.dart';
 import 'package:flukit/Components/Buttons/BasicIconButton/basic_IconButton.dart';
-import 'package:flukit/Components/Buttons/FlatIconButton/flat_IconButton.dart';
+import 'package:flukit/Components/Buttons/FlatTextButton/flat_TextButton.dart';
 import 'package:flukit/Constants/defaults.dart';
-import 'package:flukit/Enums/Avatars/AvatarEnums.dart';
+import 'package:flukit/CustomButton/basicIconButton.dart';
 import 'package:flukit/Enums/ButtonEnums/ButtonShapes/button_Shapes.dart';
 import 'package:flukit/Enums/ButtonEnums/ButtonSizes/button_Sizes.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_boxicons/flutter_boxicons.dart';
 
-import 'Components/AppBars/BasicAppBar/BasicAppBar.dart';
-import 'Components/AppBars/CustomAppBars/BasicAppBar2.dart';
-import 'Components/AppBars/CustomAppBars/HorizontalUserProfileAppBar.dart';
-import 'Components/AppBars/CustomAppBars/LocationAppBar2.dart';
-import 'Components/AppBars/CustomAppBars/LocationAppBar3.dart';
-import 'Components/AppBars/test.dart';
-import 'Components/Avatars/Avatar/Avatar.dart';
+import 'Components/AppBars/AppBarWidgets/HorizontalUserProfile.dart';
+import 'Components/AppBars/AppBarWidgets/SearchWidget.dart';
+import 'Components/AppBars/DefaultAppBars/MultipleItemAppBar/MultipleItemAppBar.dart';
 
 void main() => runApp(MyApp());
 
@@ -44,18 +44,11 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  testTap() {
-    print("tap working");
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: PreferredSize(
-          child: VerticalUserProfileAppBar(),
-          preferredSize: Size.fromHeight(70),
-        ),
+        appBar: PreferredSize(child: LocationAppBar2(), preferredSize: Size.fromHeight(70)),
         body: Padding(
           padding: EdgeInsets.all(10),
           child: Container(
@@ -66,29 +59,71 @@ class MyHomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  height: 100,
-                  color: CustomColors.black,
+                  height: 60,
                   child: Row(
                     children: <Widget>[
-                      Expanded(
-                        child: Container(
-                          color: CustomColors.blue,
-                          child: Text('PaloAlto, United States Of America',overflow: TextOverflow.ellipsis,),
+                      AppBarDefaults.backNavIcon,
+                      HorizontalUserProfile(
+                        spacing: 10,
+                        title: Text(
+                          'Hannah Baker',
+                          style: TextStyle(
+                              fontFamily: 'gilroy',
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: CustomColors.black),
                         ),
+                        leadingIcon: AppBarDefaults().appBarAction,
                       ),
-                      Expanded(
-                        child: Container(
-                          color: CustomColors.red,
+                      Flexible(
+                          child: Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            IconButton(
+                              iconSize: 24,
+                              icon: Icon(
+                                Icons.file_download,
+                                color: CustomColors.red,
+                              ),
+                              onPressed: () {},
+                            ),
+                            IconButton(
+                              iconSize: 24,
+                              icon: Icon(
+                                Icons.settings,
+                                color: CustomColors.red,
+                              ),
+                              onPressed: () {},
+                            ),
+                          ],
                         ),
+                      )),
+                    ],
+                  ),
+                ),
+                Container(
+                  color: CustomColors.black,
+                  height: 60,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        color: CustomColors.red,
                       ),
+                      Container(
+                        color: CustomColors.green,
+                      ),
+                      Spacer(),
+                      Container(
+                        color: CustomColors.blue,
+                      )
                     ],
                   ),
                 )
               ],
             ),
           ),
-        ),
-        // This trailing comma makes auto-formatting nicer for build methods.
+        ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );
   }

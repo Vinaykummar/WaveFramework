@@ -56,6 +56,7 @@ class ButtonDefaults {
 }
 
 class AppBarDefaults {
+
   static const String brandTitle = "Netflix";
   static const Color brandColor = CustomColors.red;
   static const double avatarImageWidth = 50;
@@ -63,14 +64,14 @@ class AppBarDefaults {
 
   Widget appBarAction = Avatar(
     onlineStatusColor: CustomColors.red,
-    statusIconHeight: 15,
-    statusIconWidth: 15,
+    statusIconHeight: 12,
+    statusIconWidth: 12,
     enableOnlineStatus: true,
     avatarShape: AvatarShape.Circle,
     avatarBorderType: AvatarBorderType.Plain,
     image: AppBarDefaults.avatarImage,
-    imageHeight: 40,
-    imageWidth: 40,
+    imageHeight: 30,
+    imageWidth: 30,
     onAvatarTap: () {},
   );
 
@@ -93,7 +94,23 @@ class AppBarDefaults {
     IconButton(
       iconSize: 24,
       icon: Icon(
-        Icons.favorite,
+        Icons.search,
+        color: CustomColors.red,
+      ),
+      onPressed: () {},
+    ),
+    IconButton(
+      iconSize: 24,
+      icon: Icon(
+        Icons.file_download,
+        color: CustomColors.red,
+      ),
+      onPressed: () {},
+    ),
+    IconButton(
+      iconSize: 24,
+      icon: Icon(
+        Icons.settings,
         color: CustomColors.red,
       ),
       onPressed: () {},
@@ -121,7 +138,7 @@ class AppBarDefaults {
   static const Widget backNavIcon = IconButton(
     iconSize: 24,
     icon: Icon(
-      Icons.arrow_back_ios,
+      Icons.arrow_back,
       color: CustomColors.red,
     ),
   );

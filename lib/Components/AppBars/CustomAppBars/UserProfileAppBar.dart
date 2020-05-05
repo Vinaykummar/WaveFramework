@@ -10,6 +10,8 @@ class UserProfileAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextItemAppBar(
+      bottomBorder:
+        BorderSide(color: Colors.transparent, width: 0),
       title:UserProfileItem(
         subTitle: Text(
           '25 Mutual Friends',

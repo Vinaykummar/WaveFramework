@@ -16,7 +16,7 @@ class VerticalUserProfileAppBar extends StatelessWidget {
           'Hannah Baker',
           style: TextStyle(
               fontFamily: 'gilroy',
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
               color: CustomColors.black),
         ),
@@ -28,13 +28,13 @@ class VerticalUserProfileAppBar extends StatelessWidget {
           avatarShape: AvatarShape.Circle,
           avatarBorderType: AvatarBorderType.Plain,
           image: AppBarDefaults.avatarImage,
-          imageHeight: 30,
-          imageWidth: 30,
+          imageHeight: 26,
+          imageWidth: 26,
           onAvatarTap: () {},
         ),
       ),
       leading:  IconButton(
-        iconSize: 32,
+        iconSize: 26,
         icon: Icon(
           Icons.arrow_back,
           color: CustomColors.red,
@@ -42,7 +42,7 @@ class VerticalUserProfileAppBar extends StatelessWidget {
         onPressed: () {},
       ),
       action: IconButton(
-        iconSize: 32,
+        iconSize: 26,
         icon: Icon(
           Icons.cast_connected,
           color: CustomColors.red,
