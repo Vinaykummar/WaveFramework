@@ -23,7 +23,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  flutter_boxicons: ^1.1.0
 
 
 dev_dependencies:
@@ -66,8 +65,9 @@ flutter:
         - asset: assets/fonts/Gilroy-Light.ttf
         - asset: assets/fonts/Gilroy-Medium.ttf
           weight: 700
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+    - family: boxicons
+      fonts:
+         - asset: assets/fonts/boxicons.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

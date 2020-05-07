@@ -8,6 +8,7 @@ class LocationAppBar3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextItemAppBar(
+
       title:LocationAndSubtitle(
         subTitle: Text(
         '25 Mutual Friends',

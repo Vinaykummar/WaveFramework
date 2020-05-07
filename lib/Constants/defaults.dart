@@ -50,20 +50,26 @@ class ButtonDefaults {
   );
   static const Gradient gradient = LinearGradient(
       begin: Alignment.centerLeft,
-      colors: [CustomColors.orange, CustomColors.red]);
+      colors: [CustomColors.orange, CustomColors.indigo]);
   static const BorderSide borderSide =
       BorderSide(color: CustomColors.blue, width: 2, style: BorderStyle.solid);
 }
 
 class AppBarDefaults {
 
-  static const String brandTitle = "Netflix";
-  static const Color brandColor = CustomColors.red;
+  static const String brandTitle = "wave.";
+  static const Color brandColor = CustomColors.indigo;
   static const double avatarImageWidth = 50;
   static const double avatarImageHeight = 50;
+  double statusBarHeight (BuildContext context ) => MediaQuery.of(context).padding.top;
+  static const double appBarHeight = 85;
+
+void check() {
+  print(ThemeData.light().primaryColor);
+}
 
   Widget appBarAction = Avatar(
-    onlineStatusColor: CustomColors.red,
+    onlineStatusColor: CustomColors.indigo,
     statusIconHeight: 12,
     statusIconWidth: 12,
     enableOnlineStatus: true,
@@ -71,31 +77,25 @@ class AppBarDefaults {
     avatarBorderType: AvatarBorderType.Plain,
     image: AppBarDefaults.avatarImage,
     imageHeight: 30,
-    imageWidth: 30,
+    imageWidth: 30
+    ,
     onAvatarTap: () {},
   );
 
   Widget appBarLeading = IconButton(
       icon: Icon(
         Icons.menu,
-        color: CustomColors.red,
+        color: CustomColors.indigo,
       ),
       onPressed: () {});
+
 
   List<Widget> appBarActions = [
     IconButton(
       iconSize: 24,
       icon: Icon(
         Icons.cast_connected,
-        color: CustomColors.red,
-      ),
-      onPressed: () {},
-    ),
-    IconButton(
-      iconSize: 24,
-      icon: Icon(
-        Icons.search,
-        color: CustomColors.red,
+        color: ThemeData.light().accentColor,
       ),
       onPressed: () {},
     ),
@@ -103,7 +103,7 @@ class AppBarDefaults {
       iconSize: 24,
       icon: Icon(
         Icons.file_download,
-        color: CustomColors.red,
+        color: CustomColors.indigo,
       ),
       onPressed: () {},
     ),
@@ -111,7 +111,7 @@ class AppBarDefaults {
       iconSize: 24,
       icon: Icon(
         Icons.settings,
-        color: CustomColors.red,
+        color: CustomColors.indigo,
       ),
       onPressed: () {},
     ),
@@ -119,9 +119,11 @@ class AppBarDefaults {
 
   static const Text brandName = Text(
     brandTitle,
+    maxLines: 1,
+    overflow: TextOverflow.ellipsis,
+    softWrap: false,
     style: TextStyle(
-        fontFamily: 'gilroy',
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: FontWeight.bold,
         color: brandColor),
   );
@@ -139,7 +141,7 @@ class AppBarDefaults {
     iconSize: 24,
     icon: Icon(
       Icons.arrow_back,
-      color: CustomColors.red,
+      color: CustomColors.indigo,
     ),
   );
 
@@ -149,7 +151,7 @@ class AppBarDefaults {
   Widget locationAndSubtitle = LocationAndSubtitle(
     leadingIcon: Icon(
       Icons.location_on,
-      color: CustomColors.red,
+      color: CustomColors.indigo,
     ),
     title: Text(
       'Palo Alto,California',
@@ -170,7 +172,7 @@ class AppBarDefaults {
     ),
     supportIcon: Icon(
       Icons.keyboard_arrow_down,
-      color: CustomColors.red,
+      color: CustomColors.indigo,
     ),
   );
 
@@ -179,7 +181,7 @@ class AppBarDefaults {
   Widget subtilteAndLocation = SubtitleAndLocation(
     leadingIcon: Icon(
       Icons.location_on,
-      color: CustomColors.red,
+      color: CustomColors.indigo,
     ),
     title: Text(
       'Palo Alto,California',
@@ -200,7 +202,7 @@ class AppBarDefaults {
     ),
     supportIcon: Icon(
       Icons.keyboard_arrow_down,
-      color: CustomColors.red,
+      color: CustomColors.indigo,
     ),
   );
 }

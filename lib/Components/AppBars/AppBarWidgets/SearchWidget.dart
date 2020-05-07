@@ -19,22 +19,19 @@ class SearchWidget extends StatelessWidget {
             child: Container(
               height: 38,
               decoration: BoxDecoration(
-                color: CustomColors.red.withOpacity(0.2),
+                color: CustomColors.indigo.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextField(
-                style: TextStyle(color: CustomColors.red, fontSize: 14),
+                style: TextStyle(color: CustomColors.indigo, fontSize: 14),
                 maxLines: 1,
                 textAlign: TextAlign.start,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      CupertinoIcons.search,
-                      color: CustomColors.red,
-                      size: 22,
-                    ),
+                    suffixIcon: Icon(Icons.clear,color: CustomColors.indigo,),
+                    prefixIcon: Icon(Icons.search,color: CustomColors.indigo,),
                     border: InputBorder.none,
-                    hintStyle: TextStyle(color: CustomColors.red, fontSize: 16,),
+                    hintStyle: TextStyle(color: CustomColors.indigo, fontSize: 16,),
                     hintMaxLines: 1,
                     hintText: 'Search Netflix'),
               ),

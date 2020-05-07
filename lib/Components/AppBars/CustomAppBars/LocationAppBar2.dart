@@ -12,7 +12,7 @@ class LocationAppBar2 extends StatelessWidget {
         spacing: 10,
         leadingIcon: Icon(
           Icons.location_on,
-          color: CustomColors.red,
+          color: CustomColors.indigo,
         ),
         title: Text(
           'Palo Alto,California',
@@ -21,7 +21,7 @@ class LocationAppBar2 extends StatelessWidget {
               fontFamily: 'gilroy',
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: CustomColors.black),
+              color: CustomColors.indigo),
         ),
         subTitle: Text(
           'Change The Address',
@@ -29,11 +29,11 @@ class LocationAppBar2 extends StatelessWidget {
               fontSize: 12,
               fontFamily: 'gilroy',
               fontWeight: FontWeight.normal,
-              color: CustomColors.black.withOpacity(0.5)),
+              color: CustomColors.indigo.withOpacity(0.5)),
         ),
         supportIcon: Icon(
           Icons.keyboard_arrow_down,
-          color: CustomColors.red,
+          color: CustomColors.indigo,
         ),
       ),
       actions:  [
@@ -41,7 +41,7 @@ class LocationAppBar2 extends StatelessWidget {
           iconSize: 24,
           icon: Icon(
             Icons.cast_connected,
-            color: CustomColors.red,
+            color: CustomColors.indigo,
           ),
           onPressed: () {},
         ),

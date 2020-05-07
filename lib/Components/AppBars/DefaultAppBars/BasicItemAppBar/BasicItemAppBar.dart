@@ -19,14 +19,15 @@ class BasicItemAppBar extends StatelessWidget implements PreferredSize {
       this.padding = 8,
       this.action,
       this.leading})
-      : preferredSize = Size.fromHeight(60);
+      : preferredSize = Size.fromHeight(AppBarDefaults.appBarHeight);
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: this.backgroundColor,
       child: Container(
-        padding: EdgeInsets.all(this.padding),
+        height: AppBarDefaults.appBarHeight,
+        padding: EdgeInsets.only(top: AppBarDefaults().statusBarHeight(context), left: this.padding, right: this.padding),
         decoration: BoxDecoration(
             border: Border(
           bottom: this.bottomBorder != null
@@ -38,26 +39,20 @@ class BasicItemAppBar extends StatelessWidget implements PreferredSize {
                 ),
         )),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            this.leading != null
+                ? this.leading
+                : SizedBox.shrink(),
             Expanded(
-                child: this.leading != null
-                    ? this.leading
-                    : SizedBox.shrink()),
-            Expanded(
-                flex: 6,
                 child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      this.title != null ? this.title : SizedBox.shrink()
-                    ],
+                  child: Center(
+                    child: this.title != null ? this.title : SizedBox.shrink(),
                   ),
                 )),
-            Expanded(
-                child: this.action != null
-                    ? this.action
-                    : SizedBox.shrink())
+            this.action != null
+                ? this.action
+                : SizedBox.shrink()
           ],
         ),
       ),

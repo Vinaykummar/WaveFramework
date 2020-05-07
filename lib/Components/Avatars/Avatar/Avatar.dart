@@ -101,7 +101,7 @@ class Avatar extends StatelessWidget {
                 border: Border.all(
                   color: Colors.white,
                   style: BorderStyle.solid,
-                  width: 3,
+                  width: 1.2,
                 ),
                 color: this.onlineStatusColor,
                 shape: BoxShape.circle),

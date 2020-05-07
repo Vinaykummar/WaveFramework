@@ -24,20 +24,27 @@ final double spacing;
         children: [
           this.leadingIcon,
           SizedBox(width: this.spacing,),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                child: Row(
-                  children: <Widget>[
-                    this.title,
-                    this.supportIcon
-                  ],
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Flexible(
+                        flex:4,
+                        child: Container(
+                            child: this.title),
+                      ),
+                      Flexible(child: this.supportIcon)
+                    ],
+                  ),
                 ),
-              ),
-              this.subTitle
-            ],
+                this.subTitle
+              ],
+            ),
           ),
         ],
       ),

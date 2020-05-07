@@ -1,5 +1,6 @@
 import 'package:flukit/Components/AppBars/AppBarWidgets/SearchWidget.dart';
 import 'package:flukit/Components/AppBars/AppBarWidgets/WelcomeWidget.dart';
+import 'package:flukit/Components/AppBars/CustomAppBars/LocationAppBar3.dart';
 import 'package:flukit/Components/AppBars/CustomAppBars/VerticalUserProfileAppBar.dart';
 import 'package:flukit/Components/AppBars/DefaultAppBars/BasicItemAppBar/BasicItemAppBar.dart';
 import 'package:flukit/Components/AppBars/DefaultAppBars/MultipleItemAppBar/MultipleItemAppBar.dart';
@@ -19,11 +20,7 @@ class DualAppBar extends StatelessWidget implements PreferredSize {
       color: Colors.white,
       child: Column(
         children: <Widget>[
-          MultipleItemAppBar(
-            padding: 0,
-            centerTitle: false,
-            bottomBorder: BorderSide(color: Colors.transparent, width: 0),
-          ),
+         LocationAppBar3(),
           WelcomeWidget()
         ],
       ),

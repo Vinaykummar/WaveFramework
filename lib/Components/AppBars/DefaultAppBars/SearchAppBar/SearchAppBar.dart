@@ -21,14 +21,15 @@ class SearchItemAppBar extends StatelessWidget implements PreferredSize {
       this.padding = 8,
       this.action,
       this.leading})
-      : preferredSize = Size.fromHeight(60);
+      : preferredSize = Size.fromHeight(AppBarDefaults.appBarHeight);
 
   @override
   Widget build(BuildContext context) {
     return Material(
       color: this.backgroundColor,
       child: Container(
-        padding: EdgeInsets.all(5),
+        height: AppBarDefaults.appBarHeight,
+        padding: EdgeInsets.only(top: AppBarDefaults().statusBarHeight(context), left: this.padding, right: this.padding),
         decoration: BoxDecoration(
             border: Border(
           bottom: this.bottomBorder != null
