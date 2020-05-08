@@ -14,13 +14,13 @@ class TextItemAppBar extends StatelessWidget implements PreferredSize {
   final AppBarType appBarType;
   BoxDecoration boxDecoration;
   final Gradient gradient;
-
+  final bool dualAppBarMode;
   TextItemAppBar(
       {this.title,
       this.bottomBorder,
       this.backgroundColor = Colors.white,
       this.padding = 8,
-      this.actions, this.appBarType = AppBarType.SOLID, this.gradient})
+      this.actions, this.appBarType = AppBarType.SOLID, this.gradient, this.dualAppBarMode})
       : preferredSize = Size.fromHeight(AppBarDefaults.appBarHeight);
 
   @override
@@ -80,7 +80,12 @@ class TextItemAppBar extends StatelessWidget implements PreferredSize {
       color: this.backgroundColor != null ? this.backgroundColor :  Theme.of(context).primaryColor,
       child: Container(
         height: AppBarDefaults.appBarHeight,
-        padding: EdgeInsets.only(top: AppBarDefaults().statusBarHeight(context), left: this.padding, right: this.padding),
+        padding:this.dualAppBarMode == true ? EdgeInsets.only(
+            left: this.padding,
+            right: this.padding) : EdgeInsets.only(
+            top: AppBarDefaults().statusBarHeight(context),
+            left: this.padding,
+            right: this.padding),
         decoration: this.boxDecoration,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,6 +107,7 @@ class TextItemAppBar extends StatelessWidget implements PreferredSize {
             ),
             Container(
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children:
                     this.actions != null ? this.actions : [SizedBox.shrink()],

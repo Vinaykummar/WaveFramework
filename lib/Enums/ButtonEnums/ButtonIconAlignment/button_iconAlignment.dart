@@ -30,18 +30,18 @@ class ButtonIconAlignments {
           this.icon = Icon(
             this.buttonIcon.icon,
             color: this.buttonIcon.color,
-            size: 12,
+            size: 18,
           );
-          this.sizedBoxWidth = 5;
+          this.sizedBoxWidth = 10;
           break;
         case ButtonSize.Small:
         // TODO: Handle this case.
           this.icon = Icon(
             this.buttonIcon.icon,
             color: this.buttonIcon.color,
-            size: 18,
+            size: 24,
           );
-          this.sizedBoxWidth = 8;
+          this.sizedBoxWidth = 10;
 
           break;
         case ButtonSize.Medium:
@@ -49,7 +49,7 @@ class ButtonIconAlignments {
           this.icon = Icon(
             this.buttonIcon.icon,
             color: this.buttonIcon.color,
-            size: 24,
+            size: 28,
           );
           this.sizedBoxWidth = 12;
 
@@ -59,10 +59,9 @@ class ButtonIconAlignments {
           this.icon = Icon(
             this.buttonIcon.icon,
             color: this.buttonIcon.color,
-            size: 26,
+            size: 32,
           );
           this.sizedBoxWidth = 15;
-
           break;
       }
     } else {
@@ -82,7 +81,7 @@ class ButtonIconAlignments {
         this.icons = [
           this.icon,
           SizedBox(
-            width: this.sizedBoxWidth,
+            width: 8,
           ),
           Text(
             this.buttonText.data,

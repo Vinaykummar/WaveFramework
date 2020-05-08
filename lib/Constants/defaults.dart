@@ -62,7 +62,7 @@ class AppBarDefaults {
   static const double avatarImageWidth = 50;
   static const double avatarImageHeight = 50;
   double statusBarHeight (BuildContext context ) => MediaQuery.of(context).padding.top;
-  static const double appBarHeight = 85;
+  static const double appBarHeight = 80;
 
 void check() {
   print(ThemeData.light().primaryColor);

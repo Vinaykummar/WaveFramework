@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class WVFlatIconButton extends StatelessWidget {
+class WvFlatIconButton extends StatelessWidget {
   final ButtonIconAlign iconAlignment;
   final bool enableFeedback;
   final Clip clipBehaviour;
@@ -36,8 +36,8 @@ class WVFlatIconButton extends StatelessWidget {
   Text buttonText;
   Icon buttonIcon;
 
-  WVFlatIconButton({
-    this.backgroundColor = ButtonDefaults.buttonBackgroundColor,
+  WvFlatIconButton({
+    this.backgroundColor ,
     this.cornerRadius,
     this.elevation = 0,
     this.padding = 10,
@@ -61,45 +61,23 @@ class WVFlatIconButton extends StatelessWidget {
   });
 
   Widget build(BuildContext context) {
-    ButtonWidths buttonWidths = ButtonWidths(this.width);
-    buttonWidths.checkButtonWidth();
-    ButtonShapes buttonShapes = ButtonShapes(this.shape, this.cornerRadius);
-    buttonShapes.checkButtonShape();
+
     ButtonSizes buttonSizes =
     ButtonSizes(buttonSize: this.size, padding: this.padding);
     buttonSizes.checkbuttonSize();
-    this.buttonText = this.text;
-    this.buttonIcon = this.icon;
 
-    ButtonIconAlignments buttonIconAlignments = ButtonIconAlignments(
-        buttonSize: this.size,
-        textStyle: this.textStyle,
-        buttonText: this.buttonText,
-        buttonIcon: this.icon,
-        iconAlignment: this.iconAlignment);
-    buttonIconAlignments.checkIconAlignment();
 
-    return Container(
-      padding: EdgeInsets.all(0),
-      decoration: BoxDecoration(
 
-      ),
-      child: Row(
-        mainAxisSize: buttonWidths.mainAxisSize,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [IconButton(
-          focusNode: this.focusNode,
-          splashColor: Colors.transparent,
-          highlightColor: this.highlightColor,
-          padding: buttonSizes.edgeInsets,
-          color: Colors.white,
-          onPressed: this.onPressed,
-          alignment: Alignment.center,
-          iconSize: this.iconSize == null ? buttonSizes.iconButtonIconSize : this.iconSize,
-          icon: this.icon,
-        )],
-      ),
+    return IconButton(
+      focusNode: this.focusNode,
+      splashColor: Colors.transparent,
+      highlightColor: this.highlightColor,
+      padding: buttonSizes.edgeInsets,
+      color: Theme.of(context).primaryColor,
+      onPressed: this.onPressed,
+      alignment: Alignment.center,
+      iconSize: this.iconSize == null ? buttonSizes.iconButtonIconSize : this.iconSize,
+      icon: this.icon,
     );
   }
 }

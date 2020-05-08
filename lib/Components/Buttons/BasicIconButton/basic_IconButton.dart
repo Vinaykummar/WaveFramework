@@ -28,7 +28,7 @@ class WVBasicIconButton extends StatelessWidget {
   Icon buttonIcon;
 
   WVBasicIconButton({
-    this.backgroundColor = ButtonDefaults.buttonBackgroundColor,
+    this.backgroundColor ,
     this.cornerRadius,
     this.elevation = 0,
     this.padding = 10,
@@ -59,11 +59,9 @@ class WVBasicIconButton extends StatelessWidget {
     return Container(
       height: buttonSizes.iconButtonHeight,
       width: buttonSizes.iconButtonWidth,
-      padding: EdgeInsets.all(0),
       decoration: BoxDecoration(
-        color: this.backgroundColor,
+        color: this.backgroundColor != null ? this.backgroundColor : Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(buttonShapes.borderRadius),
-        shape: BoxShape.rectangle,
       ),
       child: IconButton(
       focusNode: this.focusNode,

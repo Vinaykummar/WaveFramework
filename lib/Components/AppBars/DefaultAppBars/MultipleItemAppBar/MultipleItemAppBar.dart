@@ -15,6 +15,7 @@ class MultipleItemAppBar extends StatelessWidget implements PreferredSize {
   final AppBarType appBarType;
   BoxDecoration boxDecoration;
   final Gradient gradient;
+  final bool dualAppBarMode;
 
   MultipleItemAppBar(
       {Key key,
@@ -24,7 +25,7 @@ class MultipleItemAppBar extends StatelessWidget implements PreferredSize {
       this.padding = 5,
       this.actions,
       this.leading,
-      this.centerTitle = false, this.appBarType = AppBarType.SOLID, this.gradient})
+      this.centerTitle = false, this.appBarType = AppBarType.SOLID, this.gradient, this.dualAppBarMode})
       : preferredSize = Size.fromHeight(AppBarDefaults.appBarHeight);
 
   @override
@@ -85,7 +86,9 @@ class MultipleItemAppBar extends StatelessWidget implements PreferredSize {
       color: this.backgroundColor != null ? this.backgroundColor :  Theme.of(context).primaryColor,
       child: Container(
         height: AppBarDefaults.appBarHeight,
-        padding: EdgeInsets.only(
+        padding: this.dualAppBarMode == true ? EdgeInsets.only(
+            left: this.padding,
+            right: this.padding) : EdgeInsets.only(
             top: AppBarDefaults().statusBarHeight(context),
             left: this.padding,
             right: this.padding),

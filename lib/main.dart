@@ -1,7 +1,22 @@
 import 'package:flukit/Colors/colors.dart';
+import 'package:flukit/Components/AppBars/AppBarWidgets/SearchWidget.dart';
+import 'package:flukit/Components/AppBars/DefaultAppBars/BottomAppBar/DualAppBar.dart';
+import 'package:flukit/Components/Buttons/BasicIconButton/basic_IconButton.dart';
+import 'package:flukit/Components/Buttons/BasicTextButton/basic_TextButton.dart';
+import 'package:flukit/Components/Buttons/BasicTextIconButton/basic_TextIconButon.dart';
+import 'package:flukit/Components/Buttons/FlatIconButton/flat_IconButton.dart';
+import 'package:flukit/Components/Buttons/OutlineIconButton/outline_IconButton.dart';
+import 'package:flukit/Components/Buttons/OutlineTextIconButton/Outline_TextIconButton.dart';
+import 'package:flukit/Enums/ButtonEnums/ButtonShapes/button_Shapes.dart';
+import 'package:flukit/Enums/ButtonEnums/ButtonSizes/button_Sizes.dart';
+import 'package:flukit/Enums/ButtonEnums/ButtonWidth/button_Width.dart';
+
+import 'package:flukit/Themes/LightTheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Components/AppBars/DefaultAppBars/MultipleItemAppBar/MultipleItemAppBar.dart';
+import 'Components/Buttons/FlatTextIconButton/flat_TextIconButton.dart';
+import 'Components/Buttons/OutlineTextButton/outline_TextButton.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,16 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-          primaryColor: CustomColors.indigo,
-          accentColor: CustomColors.black,
-          fontFamily: 'gilroy',
-          brightness: Brightness.light,
-          textTheme: TextTheme(
-              body1: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-          ))),
+      theme: WaveThemes(context).lightTheme,
       home: MyHomePage(),
     );
   }
@@ -31,17 +37,11 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: MultipleItemAppBar(
+        padding: 0,
+        backgroundColor: Theme.of(context).backgroundColor,
         bottomBorder: BorderSide(color: Colors.transparent, width: 0),
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          iconSize: 28,
-          icon: Icon(
-            IconData(0xEB2B, fontFamily: 'boxicons'),
-            color: Theme.of(context).primaryColor,
-          ),
-          onPressed: () {},
-        ),
         centerTitle: true,
         title: Text(
           '.wave',
@@ -50,41 +50,23 @@ class MyHomePage extends StatelessWidget {
           softWrap: false,
           style: Theme.of(context)
               .textTheme
-              .body1
+              .title
               .copyWith(color: Theme.of(context).primaryColor),
         ),
-        actions: [
-          IconButton(
-            iconSize: 24,
-            icon: Icon(
-              Icons.settings,
-              color: Theme.of(context).primaryColor,
-            ),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(10),
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(
-                IconData(0xE929, fontFamily: 'boxicons'),
-                color: Theme.of(context).primaryColor,
-                size: 65,
-              ),
-              RaisedButton(
-                color: Theme.of(context).primaryColor,
-                onPressed: () {},
-                child: Text('hello'),
-              )
-            ],
-          ),
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+           Spacer(),
+            WVBasicTextButton(
+              size: ButtonSize.Medium,
+              onPressed: (){},
+              text: Text('Login', style: TextStyle(color: CustomColors.white,fontWeight: FontWeight.bold),),
+            ),
+          ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

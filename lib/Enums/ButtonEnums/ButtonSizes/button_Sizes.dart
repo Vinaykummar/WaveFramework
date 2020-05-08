@@ -23,42 +23,38 @@ class ButtonSizes {
     switch (this.buttonSize) {
       case ButtonSize.Mini:
         // TODO: Handle this case.
-        this.fontSize = 12;
-        this.height = 28;
-        this.edgeInsets = EdgeInsets.all(0);
-        this.width = 75;
-        this.iconButtonHeight = 45;
-        this.iconButtonWidth = 45;
-        this.iconButtonIconSize = 25;
+        this.fontSize = 16;
+        this.height=40;
+        this.edgeInsets = EdgeInsets.all(this.padding);
+        this.iconButtonHeight = 58;
+        this.iconButtonWidth = 58;
+        this.iconButtonIconSize = 28;
         break;
       case ButtonSize.Small:
         // TODO: Handle this case.
-        this.fontSize = 18;
-        this.height = 40;
+        this.fontSize = 20;
         this.edgeInsets = EdgeInsets.all(this.padding);
-        this.iconButtonHeight = 62;
-        this.iconButtonWidth = 62;
-        this.iconButtonIconSize = 40;
+        this.iconButtonHeight = 60;
+        this.iconButtonWidth = 60;
+        this.iconButtonIconSize = 30;
 
         break;
       case ButtonSize.Medium:
         // TODO: Handle this case.
-        this.fontSize = 22;
-        height = 50;
+        this.fontSize = 24;
         this.edgeInsets = EdgeInsets.all(this.padding);
-        this.iconButtonHeight = 72;
-        this.iconButtonWidth = 72;
-        this.iconButtonIconSize = 50;
+        this.iconButtonHeight = 64;
+        this.iconButtonWidth = 64;
+        this.iconButtonIconSize = 34;
 
         break;
       case ButtonSize.Large:
         // TODO: Handle this case.
-        this.fontSize = 24;
-        this.height = 58;
+        this.fontSize = 28;
         this.edgeInsets = EdgeInsets.all(this.padding);
-        this.iconButtonHeight = 82;
-        this.iconButtonWidth = 82;
-        this.iconButtonIconSize = 60;
+        this.iconButtonHeight = 68;
+        this.iconButtonWidth = 68;
+        this.iconButtonIconSize = 38;
 
         break;
     }

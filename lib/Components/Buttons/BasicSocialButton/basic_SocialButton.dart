@@ -34,7 +34,7 @@ class WVBasicSocialButton extends StatelessWidget {
   Icon buttonIcon;
 
   WVBasicSocialButton({
-    this.backgroundColor = ButtonDefaults.buttonBackgroundColor,
+    this.backgroundColor ,
     this.cornerRadius,
     this.elevation = 0,
     this.padding = 10,
@@ -68,18 +68,10 @@ class WVBasicSocialButton extends StatelessWidget {
     this.buttonIcon = this.icon;
  print(this.buttonText.style);
     try {
-      if(this.buttonText.style == null) {
-        print('no font size by user');
-        if(this.size != null) {
-          print('user provided size');
-          this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
-        }else{
-          print('user not provided size');
-          this.textStyle = TextStyle(fontSize: 22);
-        }
-      } else {
-        print(this.buttonText.style);
-        this.textStyle = this.buttonText.style;
+      if(this.size != null) {
+          this.textStyle = this.buttonText.style != null ? this.buttonText.style : TextStyle(color: CustomColors.white,fontSize: buttonSizes.fontSize);
+      } else  {
+          this.textStyle = TextStyle(color: CustomColors.white,fontSize: 22);
       }
     }
     catch (e) {

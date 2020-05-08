@@ -32,7 +32,7 @@ class WVBasicTextButton extends StatelessWidget {
   Text buttonText;
 
   WVBasicTextButton({
-    this.backgroundColor = ButtonDefaults.buttonBackgroundColor,
+    this.backgroundColor ,
     this.cornerRadius,
     this.elevation = 0,
     this.padding = 10,
@@ -64,19 +64,11 @@ class WVBasicTextButton extends StatelessWidget {
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;
     print(this.buttonText.style);
-    try {
-      if(this.buttonText.style == null) {
-        print('no font size by user');
-        if(this.size != null) {
-          print('user provided size');
-          this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
-        }else{
-          print('user not provided size');
-          this.textStyle = TextStyle(fontSize: 22);
-        }
-      } else {
-        print(this.buttonText.style);
-        this.textStyle = this.buttonText.style;
+   try {
+      if(this.size != null) {
+          this.textStyle = this.buttonText.style != null ? this.buttonText.style.copyWith(fontSize: buttonSizes.fontSize) : TextStyle(color: CustomColors.white,fontSize: buttonSizes.fontSize);
+      } else  {
+          this.textStyle = TextStyle(color: CustomColors.white,fontSize: 22);
       }
     }
     catch (e) {
@@ -105,7 +97,7 @@ class WVBasicTextButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: this.cornerRadius == null ? BorderRadius.circular(buttonShapes.borderRadius) : BorderRadius.circular(this.cornerRadius)),
         elevation: this.elevation,
-        color: this.backgroundColor,
+        color: this.backgroundColor != null ? this.backgroundColor : Theme.of(context).primaryColor,
         onPressed: this.onPressed,
         child: Container(
 

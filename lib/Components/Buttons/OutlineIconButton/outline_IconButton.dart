@@ -23,14 +23,13 @@ class WVOutlineIconButton extends StatelessWidget {
   final double elevation;
   final double padding;
   final Text text;
-  final ButtonWidthType width;
   final Function onPressed;
   final Function onLongPress;
   final Function onHighlightChanged;
   final ButtonShape shape;
   final ButtonSize size;
   final double iconSize;
-  final BoxBorder border;
+  final BorderSide border;
   Icon icon;
   MainAxisSize mainAxisSize;
   TextStyle textStyle;
@@ -38,12 +37,11 @@ class WVOutlineIconButton extends StatelessWidget {
   Icon buttonIcon;
 
   WVOutlineIconButton({
-    this.backgroundColor = ButtonDefaults.buttonBackgroundColor,
+    this.backgroundColor ,
     this.cornerRadius,
     this.elevation = 0,
     this.padding = 10,
     this.text = ButtonDefaults.buttonText,
-    this.width = ButtonDefaults.buttonWidthType,
     this.onPressed,
     this.shape = ButtonDefaults.buttonShape,
     this.size = ButtonDefaults.buttonSize,
@@ -63,8 +61,7 @@ class WVOutlineIconButton extends StatelessWidget {
   });
 
   Widget build(BuildContext context) {
-    ButtonWidths buttonWidths = ButtonWidths(this.width);
-    buttonWidths.checkButtonWidth();
+
     ButtonShapes buttonShapes = ButtonShapes(this.shape, this.cornerRadius);
     buttonShapes.checkButtonShape();
     ButtonSizes buttonSizes =
@@ -87,30 +84,30 @@ class WVOutlineIconButton extends StatelessWidget {
     return Container(
       height: buttonSizes.iconButtonHeight,
       width: buttonSizes.iconButtonWidth,
-      padding: EdgeInsets.all(0),
       decoration: BoxDecoration(
-        border: this.border,
+        border: this.border != null ?  Border.all(
+          color: this.border.color,
+          width: this.border.width,
+          style: this.border.style
+        ) : Border.all(
+            color: Theme.of(context).primaryColor,
+            width: 2,
+            style: BorderStyle.solid
+        ),
         borderRadius: BorderRadius.circular(buttonShapes.borderRadius),
-        shape: BoxShape.rectangle,
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          IconButton(
-            focusNode: this.focusNode,
-            splashColor: Colors.transparent,
-            highlightColor: this.highlightColor,
-            padding: buttonSizes.edgeInsets,
-            color: Colors.white,
-            onPressed: this.onPressed,
-            alignment: Alignment.center,
-            iconSize: this.iconSize == null
-                ? buttonSizes.iconButtonIconSize
-                : this.iconSize,
-            icon: this.icon,
-          )
-        ],
+      child: IconButton(
+        focusNode: this.focusNode,
+        splashColor: Colors.transparent,
+        highlightColor: this.highlightColor,
+        padding: buttonSizes.edgeInsets,
+        color: Colors.white,
+        onPressed: this.onPressed,
+        alignment: Alignment.center,
+        iconSize: this.iconSize == null
+            ? buttonSizes.iconButtonIconSize
+            : this.iconSize,
+        icon: this.icon,
       ),
     );
   }

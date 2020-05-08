@@ -60,37 +60,22 @@ class WVFlatTextIconButton extends StatelessWidget {
   });
 
   Widget build(BuildContext context) {
-    ButtonDefaults buttonDefaults = ButtonDefaults();
-    ButtonWidths buttonWidths = ButtonWidths(this.width);
-    buttonWidths.checkButtonWidth();
-    ButtonShapes buttonShapes = ButtonShapes(this.shape, this.cornerRadius);
-    buttonShapes.checkButtonShape();
     ButtonSizes buttonSizes =
     ButtonSizes(buttonSize: this.size, padding: this.padding);
     buttonSizes.checkbuttonSize();
     this.buttonText = this.text;
     this.buttonIcon = this.icon;
- print(this.buttonText.style);
-    try {
-      if(this.buttonText.style == null) {
-        print('no font size by user');
-        if(this.size != null) {
-          print('user provided size');
-          this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
-        }else{
-          print('user not provided size');
-          this.textStyle = TextStyle(fontSize: 22);
-        }
-      } else {
-        print(this.buttonText.style);
-        this.textStyle = this.buttonText.style;
+    print(this.buttonText.style);
+   try {
+      if(this.size != null) {
+          this.textStyle = this.buttonText.style != null ? this.buttonText.style : TextStyle(color: Theme.of(context).primaryColor,fontSize: buttonSizes.fontSize);
+      } else  {
+          this.textStyle = TextStyle(color: CustomColors.white,fontSize: 22);
       }
     }
     catch (e) {
       print(e);
     }
-
-    print(this.icon);
     ButtonIconAlignments buttonIconAlignments = ButtonIconAlignments(
         buttonSize: this.size,
         textStyle: this.textStyle,
@@ -117,7 +102,6 @@ class WVFlatTextIconButton extends StatelessWidget {
         onPressed: this.onPressed,
         child: Container(
           child: Row(
-            mainAxisSize: buttonWidths.mainAxisSize,
             mainAxisAlignment: MainAxisAlignment.center,
             children: buttonIconAlignments.icons,
           ),

@@ -71,19 +71,11 @@ class WVOutlineTextIconButton extends StatelessWidget {
     this.buttonText = this.text;
     this.buttonIcon = this.icon;
  print(this.buttonText.style);
-    try {
-      if(this.buttonText.style == null) {
-        print('no font size by user');
-        if(this.size != null) {
-          print('user provided size');
-          this.textStyle = TextStyle(fontSize: buttonSizes.fontSize);
-        }else{
-          print('user not provided size');
-          this.textStyle = TextStyle(fontSize: 22);
-        }
-      } else {
-        print(this.buttonText.style);
-        this.textStyle = this.buttonText.style;
+   try {
+      if(this.size != null) {
+          this.textStyle = this.buttonText.style != null ? this.buttonText.style : TextStyle(color: Theme.of(context).primaryColor,fontSize: buttonSizes.fontSize);
+      } else  {
+          this.textStyle = TextStyle(color: CustomColors.white,fontSize: 22);
       }
     }
     catch (e) {
@@ -121,11 +113,15 @@ class WVOutlineTextIconButton extends StatelessWidget {
         height: buttonSizes.height,
         padding: buttonSizes.edgeInsets,
         shape: RoundedRectangleBorder(
-            side: BorderSide(
-              color: this.border.color,
-              style: this.border.style,
-              width: this.border.width
-            ),
+            side: this.border != null ?  BorderSide(
+                color: this.border.color,
+                style: this.border.style,
+                width: this.border.width
+            ) : BorderSide(
+            color: Theme.of(context).primaryColor,
+            style: BorderStyle.solid,
+            width: 2
+        ),
             borderRadius: this.cornerRadius != null
                 ? BorderRadius.circular(this.cornerRadius)
                 : BorderRadius.circular(buttonShapes.borderRadius)),
