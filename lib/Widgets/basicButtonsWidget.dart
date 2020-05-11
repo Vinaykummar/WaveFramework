@@ -64,7 +64,6 @@ class BasicButtonsGroup extends StatelessWidget {
                     icon: Icon(
                       Icons.person_add,
                       color: Colors.white,
-
                     ),
                     shape: ButtonShape.Round,
                     width: ButtonWidthType.FullWidth,

@@ -22,7 +22,7 @@ class MultipleItemAppBar extends StatelessWidget implements PreferredSize {
       this.title,
       this.bottomBorder,
       this.backgroundColor = Colors.white,
-      this.padding = 5,
+      this.padding = 8,
       this.actions,
       this.leading,
       this.centerTitle = false, this.appBarType = AppBarType.SOLID, this.gradient, this.dualAppBarMode})
@@ -121,7 +121,7 @@ class MultipleItemAppBar extends StatelessWidget implements PreferredSize {
             Container(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children:
                     this.actions != null ? this.actions : [SizedBox.shrink()],
               ),

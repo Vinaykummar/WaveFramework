@@ -56,29 +56,25 @@ class ButtonDefaults {
 }
 
 class AppBarDefaults {
-
   static const String brandTitle = "wave.";
   static const Color brandColor = CustomColors.indigo;
   static const double avatarImageWidth = 50;
   static const double avatarImageHeight = 50;
-  double statusBarHeight (BuildContext context ) => MediaQuery.of(context).padding.top;
+
+  double statusBarHeight(BuildContext context) =>
+      MediaQuery.of(context).padding.top;
   static const double appBarHeight = 80;
 
-void check() {
-  print(ThemeData.light().primaryColor);
-}
+  void check() {
+    print(ThemeData.light().primaryColor);
+  }
 
   Widget appBarAction = Avatar(
-    onlineStatusColor: CustomColors.indigo,
-    statusIconHeight: 12,
-    statusIconWidth: 12,
-    enableOnlineStatus: true,
     avatarShape: AvatarShape.Circle,
-    avatarBorderType: AvatarBorderType.Plain,
+    avatarBorderType: AvatarBorderType.Border,
     image: AppBarDefaults.avatarImage,
-    imageHeight: 30,
-    imageWidth: 30
-    ,
+    imageHeight: 40,
+    imageWidth: 40,
     onAvatarTap: () {},
   );
 
@@ -89,24 +85,7 @@ void check() {
       ),
       onPressed: () {});
 
-
   List<Widget> appBarActions = [
-    IconButton(
-      iconSize: 24,
-      icon: Icon(
-        Icons.cast_connected,
-        color: ThemeData.light().accentColor,
-      ),
-      onPressed: () {},
-    ),
-    IconButton(
-      iconSize: 24,
-      icon: Icon(
-        Icons.file_download,
-        color: CustomColors.indigo,
-      ),
-      onPressed: () {},
-    ),
     IconButton(
       iconSize: 24,
       icon: Icon(
@@ -122,10 +101,8 @@ void check() {
     maxLines: 1,
     overflow: TextOverflow.ellipsis,
     softWrap: false,
-    style: TextStyle(
-        fontSize: 22,
-        fontWeight: FontWeight.bold,
-        color: brandColor),
+    style:
+        TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: brandColor),
   );
 
   static const Text backNavTitle = Text(
@@ -146,7 +123,7 @@ void check() {
   );
 
   static const DecorationImage avatarImage = DecorationImage(
-      fit: BoxFit.cover, image: AssetImage('assets/images/avatar-4.png'));
+      fit: BoxFit.cover, image: AssetImage('assets/images/a5.jpg'));
 
   Widget locationAndSubtitle = LocationAndSubtitle(
     leadingIcon: Icon(
@@ -176,8 +153,6 @@ void check() {
     ),
   );
 
-
-
   Widget subtilteAndLocation = SubtitleAndLocation(
     leadingIcon: Icon(
       Icons.location_on,
@@ -206,6 +181,3 @@ void check() {
     ),
   );
 }
-
-
-

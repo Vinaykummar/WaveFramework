@@ -97,10 +97,9 @@ class WVBasicTextButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: this.cornerRadius == null ? BorderRadius.circular(buttonShapes.borderRadius) : BorderRadius.circular(this.cornerRadius)),
         elevation: this.elevation,
-        color: this.backgroundColor != null ? this.backgroundColor : Theme.of(context).primaryColor,
+        color: this.backgroundColor ,
         onPressed: this.onPressed,
         child: Container(
-
           child: Row(
             mainAxisSize: buttonWidths.mainAxisSize,
             mainAxisAlignment: MainAxisAlignment.center,

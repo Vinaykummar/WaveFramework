@@ -90,7 +90,6 @@ class WVBasicTextIconButton extends StatelessWidget {
     buttonIconAlignments.checkIconAlignment();
 
     return Container(
-      width: buttonSizes.width,
       child: MaterialButton(
         enableFeedback: this.enableFeedback,
         hoverElevation: 0,
@@ -106,7 +105,6 @@ class WVBasicTextIconButton extends StatelessWidget {
         highlightColor: this.highlightColor,
         focusElevation: 0,
         highlightElevation: 0,
-        height: buttonSizes.height,
         padding: buttonSizes.edgeInsets,
         shape: RoundedRectangleBorder(
             borderRadius: this.cornerRadius != null

@@ -14,9 +14,18 @@ import 'package:flukit/Enums/ButtonEnums/ButtonWidth/button_Width.dart';
 import 'package:flukit/Themes/LightTheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'Components/AppBars/AppBarWidgets/UserProfileSubtitle.dart';
+import 'Components/AppBars/AppBarWidgets/VerticalUserProfileItem.dart';
+import 'Components/AppBars/DefaultAppBars/BasicItemAppBar/BasicItemAppBar.dart';
 import 'Components/AppBars/DefaultAppBars/MultipleItemAppBar/MultipleItemAppBar.dart';
+import 'Components/Avatars/Avatar/Avatar.dart';
 import 'Components/Buttons/FlatTextIconButton/flat_TextIconButton.dart';
 import 'Components/Buttons/OutlineTextButton/outline_TextButton.dart';
+import 'Components/ImageOverlays/ImageOverlay.dart';
+import 'Constants/defaults.dart';
+import 'Enums/Avatars/AvatarEnums.dart';
+import 'Enums/ButtonEnums/ButtonIconAlignment/button_iconAlignment.dart';
+import 'Widgets/basicButtonsWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,7 +36,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: WaveThemes(context).lightTheme,
+      theme: WaveThemes(context).darkTheme,
       home: MyHomePage(),
     );
   }
@@ -37,36 +46,201 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
       appBar: MultipleItemAppBar(
-        padding: 0,
         backgroundColor: Theme.of(context).backgroundColor,
-        bottomBorder: BorderSide(color: Colors.transparent, width: 0),
         centerTitle: true,
+        padding: 10,
         title: Text(
-          '.wave',
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          softWrap: false,
+          'Zopper',
           style: Theme.of(context)
               .textTheme
               .title
               .copyWith(color: Theme.of(context).primaryColor),
         ),
+        leading: IconButton(
+            icon: Icon(
+              Icons.menu,
+              color: Theme.of(context).primaryColor,
+            ),
+            onPressed: () {}),
+        actions: [AppBarDefaults().appBarAction],
       ),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Padding(
         padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-           Spacer(),
-            WVBasicTextButton(
-              size: ButtonSize.Medium,
-              onPressed: (){},
-              text: Text('Login', style: TextStyle(color: CustomColors.white,fontWeight: FontWeight.bold),),
-            ),
-          ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Trending Now',
+                style: Theme.of(context).textTheme.title,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ImageOverlay(
+                color: Colors.black,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                widgets: <Widget>[
+                  Text(
+                    'Mount Valley',
+                    style: Theme.of(context)
+                        .textTheme
+                        .title
+                        .copyWith(color: CustomColors.white),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Most Popular Right At Your Finger Tips Refreshed At Every Interval',
+                    style: Theme.of(context).textTheme.title.copyWith(
+                        color: CustomColors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.normal),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  WVBasicTextButton(
+                    onPressed: () {},
+                    width: ButtonWidthType.Block,
+                    shape: ButtonShape.Round,
+                    size: ButtonSize.Mini,
+                    backgroundColor: CustomColors.white,
+                    text: Text(
+                      'Subscribe',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black),
+                    ),
+                  )
+                ],
+                padding: EdgeInsets.all(20),
+                gradient: LinearGradient(
+                    colors: [Colors.transparent, Colors.black],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter),
+                opacity: 0.5,
+                height: 220,
+                backgroundimage: DecorationImage(
+                    image: new AssetImage('assets/images/a2.png'),
+                    fit: BoxFit.cover),
+                borderRadius: 20,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ImageOverlay(
+                color: Colors.black,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                widgets: <Widget>[
+                  Text(
+                    'High Mountains',
+                    style: Theme.of(context)
+                        .textTheme
+                        .title
+                        .copyWith(color: CustomColors.white),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Most Popular Right At Your Finger Tips Refreshed At Every Interval',
+                    style: Theme.of(context).textTheme.title.copyWith(
+                        color: CustomColors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.normal),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  WVBasicTextButton(
+                    onPressed: () {},
+                    width: ButtonWidthType.Block,
+                    shape: ButtonShape.Round,
+                    size: ButtonSize.Mini,
+                    backgroundColor: CustomColors.white,
+                    text: Text(
+                      'Subscribe',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black),
+                    ),
+                  )
+                ],
+                padding: EdgeInsets.all(20),
+                gradient: LinearGradient(
+                    colors: [Colors.transparent, Colors.black],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter),
+                opacity: 0.5,
+                height: 220,
+                backgroundimage: DecorationImage(
+                    image: new AssetImage('assets/images/a3.png'),
+                    fit: BoxFit.cover),
+                borderRadius: 20,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ImageOverlay(
+                color: Colors.black,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                widgets: <Widget>[
+                  Text(
+                    'Green Lands',
+                    style: Theme.of(context)
+                        .textTheme
+                        .title
+                        .copyWith(color: CustomColors.white),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Most Popular Right At Your Finger Tips Refreshed At Every Interval',
+                    style: Theme.of(context).textTheme.title.copyWith(
+                        color: CustomColors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.normal),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  WVBasicTextButton(
+                    onPressed: () {},
+                    width: ButtonWidthType.Block,
+                    shape: ButtonShape.Round,
+                    size: ButtonSize.Mini,
+                    backgroundColor: CustomColors.white,
+                    text: Text(
+                      'Subscribe',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black),
+                    ),
+                  )
+                ],
+                padding: EdgeInsets.all(20),
+                gradient: LinearGradient(
+                    colors: [Colors.transparent, Colors.black],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter),
+                opacity: 0.5,
+                height: 220,
+                backgroundimage: DecorationImage(
+                    image: new AssetImage('assets/images/a4.jpg'),
+                    fit: BoxFit.cover),
+                borderRadius: 20,
+              )
+            ],
+          ),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

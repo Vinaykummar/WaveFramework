@@ -19,23 +19,25 @@ class UserProfileItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          this.leadingIcon,
+          this.leadingIcon ?? SizedBox.shrink(),
           SizedBox(width: this.spacing,),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                child: Row(
-                  children: <Widget>[
-                    this.title,
-                  ],
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Flexible(
+                  child: Container(
+                    child: this.title,
+                  ),
                 ),
-              ),
-              this.subTitle
-            ],
+                SizedBox(height: 3,),
+                this.subTitle
+              ],
+            ),
           ),
         ],
       ),
