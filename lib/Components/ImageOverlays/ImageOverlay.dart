@@ -56,6 +56,9 @@ class ImageOverlay extends StatelessWidget {
             ),
           ),
           Container(
+            decoration: BoxDecoration(
+                color: this.color,
+                borderRadius: BorderRadius.circular(this.borderRadius)),
             padding: this.padding,
             width: this.width,
             child: Column(

@@ -63,6 +63,9 @@ class ButtonIconAlignments {
           );
           this.sizedBoxWidth = 15;
           break;
+        case ButtonSize.Tiny:
+          // TODO: Handle this case.
+          break;
       }
     } else {
       this.icon = Icon(

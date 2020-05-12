@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum ButtonSize { Mini, Small, Medium, Large }
+enum ButtonSize { Tiny,Mini, Small, Medium, Large }
 
 class ButtonSizes {
   final ButtonSize buttonSize;
@@ -26,9 +26,9 @@ class ButtonSizes {
         this.fontSize = 16;
         this.height=40;
         this.edgeInsets = EdgeInsets.all(this.padding);
-        this.iconButtonHeight = 58;
-        this.iconButtonWidth = 58;
-        this.iconButtonIconSize = 28;
+        this.iconButtonHeight = 40;
+        this.iconButtonWidth = 40;
+        this.iconButtonIconSize = 22;
         break;
       case ButtonSize.Small:
         // TODO: Handle this case.
@@ -56,6 +56,16 @@ class ButtonSizes {
         this.iconButtonWidth = 68;
         this.iconButtonIconSize = 38;
 
+        break;
+      case ButtonSize.Tiny:
+        // TODO: Handle this case.
+        this.fontSize = 14;
+        this.height=30;
+        this.edgeInsets = EdgeInsets.all(0);
+        this.iconButtonHeight = 40;
+        this.iconButtonWidth = 40;
+        this.iconButtonIconSize = 22;
+        break;
         break;
     }
   }

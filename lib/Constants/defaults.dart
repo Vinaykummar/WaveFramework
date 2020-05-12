@@ -70,6 +70,7 @@ class AppBarDefaults {
   }
 
   Widget appBarAction = Avatar(
+    avatarBorder: Border.all(color: CustomColors.white,width: 2,),
     avatarShape: AvatarShape.Circle,
     avatarBorderType: AvatarBorderType.Border,
     image: AppBarDefaults.avatarImage,
