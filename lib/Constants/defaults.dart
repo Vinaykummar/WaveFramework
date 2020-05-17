@@ -63,15 +63,14 @@ class AppBarDefaults {
 
   double statusBarHeight(BuildContext context) =>
       MediaQuery.of(context).padding.top;
-  static const double appBarHeight = 80;
+  static const double appBarHeight = 70;
 
   void check() {
     print(ThemeData.light().primaryColor);
   }
 
   Widget appBarAction = Avatar(
-    avatarBorder: Border.all(color: CustomColors.white,width: 2,),
-    avatarShape: AvatarShape.Circle,
+    avatarShape: AvatarShape.Cornered,
     avatarBorderType: AvatarBorderType.Border,
     image: AppBarDefaults.avatarImage,
     imageHeight: 40,

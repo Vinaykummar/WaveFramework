@@ -15,12 +15,13 @@ class TextItemAppBar extends StatelessWidget implements PreferredSize {
   BoxDecoration boxDecoration;
   final Gradient gradient;
   final bool dualAppBarMode;
+  final BorderRadius borderRadius;
   TextItemAppBar(
       {this.title,
       this.bottomBorder,
       this.backgroundColor = Colors.white,
       this.padding = 8,
-      this.actions, this.appBarType = AppBarType.SOLID, this.gradient, this.dualAppBarMode})
+      this.actions, this.appBarType = AppBarType.SOLID, this.gradient, this.dualAppBarMode, this.borderRadius})
       : preferredSize = Size.fromHeight(AppBarDefaults.appBarHeight);
 
   @override
@@ -77,6 +78,7 @@ class TextItemAppBar extends StatelessWidget implements PreferredSize {
     checkAppBarType();
 
     return Material(
+      borderRadius: this.borderRadius,
       color: this.backgroundColor != null ? this.backgroundColor :  Theme.of(context).primaryColor,
       child: Container(
         height: AppBarDefaults.appBarHeight,

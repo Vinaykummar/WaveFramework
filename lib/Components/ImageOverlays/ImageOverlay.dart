@@ -18,6 +18,7 @@ class ImageOverlay extends StatelessWidget {
   final double borderRadius;
   final EdgeInsets padding;
   final bool gradientOverlay;
+  final bool solidBackground;
 
   const ImageOverlay({
     Key key,
@@ -31,7 +32,7 @@ class ImageOverlay extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadius,
-    this.padding, this.gradientOverlay,
+    this.padding, this.gradientOverlay, this.solidBackground,
   }) : super(key: key);
 
   @override
@@ -57,7 +58,7 @@ class ImageOverlay extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-                color: this.color,
+                color: this.solidBackground == true ? this.color : Colors.transparent,
                 borderRadius: BorderRadius.circular(this.borderRadius)),
             padding: this.padding,
             width: this.width,

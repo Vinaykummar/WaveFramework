@@ -10,7 +10,7 @@ class WaveThemes {
       iconTheme: IconThemeData(
           color: CustomColors.white
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: CustomColors.black,
       primaryColor: CustomColors.white,
       accentColor: CustomColors.white,
       fontFamily: 'gilroy',
@@ -33,7 +33,7 @@ class WaveThemes {
       color: CustomColors.white
     ),
       backgroundColor: CustomColors.white,
-      primaryColor: CustomColors.red,
+      primaryColor: CustomColors.indigo,
       accentColor: CustomColors.yellow,
       fontFamily: 'gilroy',
       brightness: Brightness.light,

@@ -1,33 +1,36 @@
-import 'package:flukit/Colors/colors.dart';
-import 'package:flukit/Components/AppBars/AppBarWidgets/SearchWidget.dart';
-import 'package:flukit/Components/AppBars/DefaultAppBars/BottomAppBar/DualAppBar.dart';
-import 'package:flukit/Components/Buttons/BasicIconButton/basic_IconButton.dart';
-import 'package:flukit/Components/Buttons/BasicTextButton/basic_TextButton.dart';
-import 'package:flukit/Components/Buttons/BasicTextIconButton/basic_TextIconButon.dart';
-import 'package:flukit/Components/Buttons/FlatIconButton/flat_IconButton.dart';
-import 'package:flukit/Components/Buttons/OutlineIconButton/outline_IconButton.dart';
-import 'package:flukit/Components/Buttons/OutlineTextIconButton/Outline_TextIconButton.dart';
-import 'package:flukit/Components/HorizontalItems/HorizontalItems.dart';
-import 'package:flukit/Enums/ButtonEnums/ButtonShapes/button_Shapes.dart';
-import 'package:flukit/Enums/ButtonEnums/ButtonSizes/button_Sizes.dart';
-import 'package:flukit/Enums/ButtonEnums/ButtonWidth/button_Width.dart';
-
+import 'package:flukit/Components/AppBars/CustomAppBars/LocationAppBar1.dart';
+import 'package:flukit/CustomButton/basicIconButton.dart';
 import 'package:flukit/Themes/LightTheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Components/AppBars/AppBarWidgets/UserProfileSubtitle.dart';
-import 'Components/AppBars/AppBarWidgets/VerticalUserProfileItem.dart';
-import 'Components/AppBars/DefaultAppBars/BasicItemAppBar/BasicItemAppBar.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:mapbox_gl/mapbox_gl.dart';
+import 'Colors/colors.dart';
 import 'Components/AppBars/DefaultAppBars/MultipleItemAppBar/MultipleItemAppBar.dart';
 import 'Components/Avatars/Avatar/Avatar.dart';
-import 'Components/Buttons/FlatTextIconButton/flat_TextIconButton.dart';
-import 'Components/Buttons/OutlineTextButton/outline_TextButton.dart';
+import 'Components/Buttons/BasicIconButton/basic_IconButton.dart';
+import 'Components/Buttons/BasicTextButton/basic_TextButton.dart';
+import 'Components/Buttons/BasicTextIconButton/basic_TextIconButon.dart';
+import 'Components/Buttons/OutlineIconButton/outline_IconButton.dart';
+import 'Components/DiscoverMore/DiscoverMore.dart';
+import 'Components/HorizontalItems/HorizontalItems.dart';
+import 'Components/ImageOverlays/CustomImageOverlayComponents/ArticleOverlay1.dart';
+import 'Components/ImageOverlays/CustomImageOverlayComponents/ArticleOverlay2.dart';
+import 'Components/ImageOverlays/CustomImageOverlayComponents/ArticleOverlay3.dart';
+import 'Components/ImageOverlays/CustomImageOverlayComponents/ArticleOverlay4.dart';
+import 'Components/ImageOverlays/CustomImageOverlayComponents/DigitalCard.dart';
+import 'Components/ImageOverlays/CustomImageOverlayComponents/ProjectUi.dart';
+import 'Components/ImageOverlays/CustomImageOverlayComponents/UserProfileWithOverlappedAvatars.dart';
 import 'Components/ImageOverlays/ImageOverlay.dart';
+import 'Components/MiniStoreDetails/MiniStoreDetails.dart';
 import 'Components/OverlappedAvatars/OverlappedAvatars.dart';
+import 'Components/WaitingTimeWidget/WaitingTimeWidget.dart';
 import 'Constants/defaults.dart';
 import 'Enums/Avatars/AvatarEnums.dart';
 import 'Enums/ButtonEnums/ButtonIconAlignment/button_iconAlignment.dart';
-import 'Widgets/basicButtonsWidget.dart';
+import 'Enums/ButtonEnums/ButtonShapes/button_Shapes.dart';
+import 'Enums/ButtonEnums/ButtonSizes/button_Sizes.dart';
+import 'Enums/ButtonEnums/ButtonWidth/button_Width.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,221 +41,143 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: WaveThemes(context).darkTheme,
+      theme: WaveThemes(context).lightTheme,
       home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  Position position;
+
+  MapboxMapController mapboxMapController;
+
+  bool _gotCurrentPosition = false;
+
+  Future<Position> _getCurrentPosition() async {
+    this.position = await Geolocator().getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best,
+        locationPermissionLevel: GeolocationPermission.location);
+    return this.position;
+  }
+
+  void _animateToUserPosition() {
+    this._getCurrentPosition().then((value) {
+      print("yes got your location");
+      setState(() {
+        this._gotCurrentPosition = true;
+      });
+      this.mapboxMapController.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(
+              zoom: 15, target: LatLng(value.latitude, value.longitude))));
+    }).catchError((onError) => print(onError));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: MultipleItemAppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
-        centerTitle: true,
-        padding: 10,
-        title: Text(
-          'Zopper',
-          style: Theme.of(context)
-              .textTheme
-              .title
-              .copyWith(color: Theme.of(context).primaryColor),
-        ),
-        leading: IconButton(
-            icon: Icon(
-              Icons.menu,
-              color: Theme.of(context).primaryColor,
-            ),
-            onPressed: () {}),
-        actions: [AppBarDefaults().appBarAction],
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Trending Now',
-                style: Theme.of(context).textTheme.title,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              ProjectUi(context),
-              SizedBox(
-                height: 20,
-              ),
-              ProjectUi(context),
-              SizedBox(
-                height: 20,
-              ),
-              ProjectUi(context),
-              SizedBox(
-                height: 20,
-              ),
-              ProjectUi(context),
-              SizedBox(
-                height: 20,
-              ),
-            ],
-          ),
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-
-  ImageOverlay ProjectUi(BuildContext context) {
-
-
-    return ImageOverlay(
-              color: Colors.white,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              widgets: <Widget>[
-                HorizontalItems(
-                  leadings: <Widget>[
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Design Discussion',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            softWrap: true,
-                            style: Theme.of(context).textTheme.title.copyWith(
-                                color: CustomColors.black, fontSize: 20),
-                          ),
-                          SizedBox(height: 8,),
-                          Text(
-                            'Timings : 16:30-20:00',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                            softWrap: true,
-                            style: Theme.of(context).textTheme.title.copyWith(
-                                color: CustomColors.black,
-                                fontFamily: 'Roboto',
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal),
-                          ),
-                          SizedBox(height: 5,),
-                          HorizontalItems(
-                            leadings: [
-                              WVBasicTextButton(
-                              onPressed: () {},
-                                padding: 0,
-                              backgroundColor: Colors.green.withOpacity(0.2),
-                              text: Text('Team', style: TextStyle(color: Colors.green),),
-                              shape: ButtonShape.Round,
-                              size: ButtonSize.Tiny,
-                              width: ButtonWidthType.Block,
-                            ),
-                            SizedBox(width: 8,),
-                              WVBasicTextButton(
-                                onPressed: () {},
-                                padding: 0,
-                                backgroundColor: Colors.red.withOpacity(0.2),
-                                text: Text('Meeting', style: TextStyle(color: Colors.red),),
-                                shape: ButtonShape.Round,
-                                size: ButtonSize.Tiny,
-                                width: ButtonWidthType.Block,
-                              )
-                            ],
-                          )
-                        ],
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: <Widget>[
+          MapboxMap(
+              styleString: 'mapbox://styles/tgvinay7/cka8himzn0a9n1jpd3gjo54bf',
+              onMapCreated: (MapboxMapController mapboxMapController) {
+                print('mapboxMapController');
+                this.mapboxMapController = mapboxMapController;
+                this._animateToUserPosition();
+              },
+              myLocationEnabled: true,
+              initialCameraPosition: CameraPosition(
+                  zoom: 12, target: LatLng(17.366131, 78.429169))),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: AppBarDefaults().statusBarHeight(context) + 10),
+                  child: LocationAppBar1(),
+                ),
+                Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    WVBasicIconButton(
+                      backgroundColor: Colors.black,
+                      icon: Icon(
+                        Icons.gps_fixed,
+                        color: Colors.white,
                       ),
+                      shape: ButtonShape.Round,
+                      padding: 0,
+                      onPressed: () async {
+                        setState(() {
+                          this._gotCurrentPosition = false;
+                        });
+                        this._animateToUserPosition();
+                        this.mapboxMapController.addSymbol(
+                              SymbolOptions(
+                                geometry: LatLng(17.369193, 78.423363),
+                                iconImage: 'airport-15',
+                              ),
+                            );
+                      },
+                      size: ButtonSize.Mini,
                     ),
                   ],
                 ),
-                HorizontalItems(
-                  leadings: <Widget>[
-                    OverlappedAvatars(
-                      avatars: [
-                        Avatar(
-                          avatarBorder: Border.all(color: CustomColors.white,width: 2,),
-                          avatarShape: AvatarShape.Circle,
-                          avatarBorderType: AvatarBorderType.Border,
-                          image: DecorationImage(
-                              fit: BoxFit.cover, image: AssetImage('assets/images/a1.jpg')),
-                          imageHeight: 45,
-                          imageWidth: 45,
-                          onAvatarTap: () {},
-                        ),
-                        Avatar(
-                          avatarBorder: Border.all(color: CustomColors.white,width: 2,),
-
-                          avatarShape: AvatarShape.Circle,
-                          avatarBorderType: AvatarBorderType.Border,
-                          image: DecorationImage(
-                              fit: BoxFit.cover, image: AssetImage('assets/images/a5.jpg')),
-                          imageHeight: 45,
-                          imageWidth: 45,
-                          onAvatarTap: () {},
-                        ),
-                        Avatar(
-                          avatarBorder: Border.all(color: CustomColors.white,width: 2,),
-
-                          avatarShape: AvatarShape.Circle,
-                          avatarBorderType: AvatarBorderType.Border,
-                          image: DecorationImage(
-                              fit: BoxFit.cover, image: AssetImage('assets/images/a3.png')),
-                          imageHeight: 45,
-                          imageWidth: 45,
-                          onAvatarTap: () {},
-                        ),
-                        Avatar(
-                          avatarBorder: Border.all(color: CustomColors.white,width: 2,),
-
-                          avatarShape: AvatarShape.Circle,
-                          avatarBorderType: AvatarBorderType.Border,
-                          image: DecorationImage(
-                              fit: BoxFit.cover, image: AssetImage('assets/images/a4.jpg')),
-                          imageHeight: 45,
-                          imageWidth: 45,
-                          onAvatarTap: () {},
-                        ),
-                      ],
-                    ),
-                  ],
-                  actions: <Widget>[
-                    WVOutlineIconButton(
-                      border: BorderSide(
-                          color: Colors.pink,
-                          width: 2
-                      ),
-                      padding: 0,
-                      size: ButtonSize.Mini,
-                      shape: ButtonShape.Round,
-                      icon: Icon(
-                        Icons.edit,
-                        color: CustomColors.pink,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    WVBasicIconButton(
-                      padding: 0,
-                      size: ButtonSize.Mini,
-                      shape: ButtonShape.Round,
-                      icon: Icon(
-                        Icons.arrow_forward,
-                        color: CustomColors.white,
-                      ),
-                      backgroundColor: CustomColors.pink,
-                    ),
-                  ],
-                )
+                 
+                SizedBox(
+                  height: 10,
+                ),
+                this._gotCurrentPosition == false
+                    ? ImageOverlay(
+                        solidBackground: true,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        padding: EdgeInsets.all(20),
+                        opacity: 1,
+                        color: Colors.black,
+                        borderRadius: 20,
+                        widgets: [
+                          HorizontalItems(
+                            actions: <Widget>[
+                              this._gotCurrentPosition == true
+                                  ? SizedBox.shrink()
+                                  : SizedBox(
+                                      height: 30,
+                                      width: 30,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                Colors.white),
+                                      ),
+                                    )
+                            ],
+                            leadings: <Widget>[
+                              Text(
+                                'Getting Location',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    : DiscoverMore(),
               ],
-              padding: EdgeInsets.all(20),
-              opacity: 1,
-              height: 200,
-              borderRadius: 20,
-            );
+            ),
+          ),
+        ],
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
   }
 }
-

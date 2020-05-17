@@ -22,7 +22,7 @@ class HorizontalItems extends StatelessWidget {
       this.padding,
       this.actions,
       this.leadings,
-      this.leadingMainAxisAlignment,
+      this.leadingMainAxisAlignment = MainAxisAlignment.start,
       this.leadingCrossAxisAlignment,
       this.actionMainAxisAlignment,
       this.actionCrossAxisAlignment,
@@ -39,15 +39,16 @@ class HorizontalItems extends StatelessWidget {
             child: Container(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: this.leadingMainAxisAlignment,
                 children: this.leadings,
               ),
             ),
           ),
           Container(
             child: Row(
-              children:
-                  this.actions != null ? this.actions : [SizedBox.shrink()],
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: this.actions,
             ),
           )
         ],

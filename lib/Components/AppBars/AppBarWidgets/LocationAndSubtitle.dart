@@ -22,7 +22,7 @@ final double spacing;
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          this.leadingIcon,
+          this.leadingIcon != null ? this.leadingIcon : SizedBox.shrink(),
           SizedBox(width: this.spacing,),
           Expanded(
             child: Column(

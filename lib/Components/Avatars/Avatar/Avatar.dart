@@ -11,11 +11,13 @@ class Avatar extends StatelessWidget {
   final Function onAvatarTap;
   final AvatarBorderType avatarBorderType;
   final AvatarShape avatarShape;
-  final double cornerRadius;
+  final BorderRadiusGeometry cornerRadius;
   final bool enableOnlineStatus;
   final Color onlineStatusColor;
   final double statusIconHeight;
   final double statusIconWidth;
+  final Widget child;
+  final Color backgroundColor;
 
   Border border;
   BorderRadius borderRadius;
@@ -34,7 +36,7 @@ class Avatar extends StatelessWidget {
         this.enableOnlineStatus = false,
         this.onlineStatusColor = CustomColors.green,
         this.statusIconHeight,
-        this.statusIconWidth})
+        this.statusIconWidth, this.child, this.backgroundColor})
       : super(key: key);
 
   @override
@@ -53,7 +55,7 @@ class Avatar extends StatelessWidget {
         // TODO: Handle this case.
           this.boxShape = BoxShape.rectangle;
           if (this.cornerRadius != null) {
-            this.borderRadius = BorderRadius.circular(this.cornerRadius);
+            this.borderRadius = this.cornerRadius;
           } else {
             this.borderRadius = BorderRadius.circular(10);
           }
@@ -84,11 +86,12 @@ class Avatar extends StatelessWidget {
               borderRadius: this.borderRadius,
               border: this.border,
               image: this.image,
-              color: CustomColors.blue,
+              color: this.backgroundColor != null ? this.backgroundColor :  Theme.of(context).primaryColor,
               shape: this.boxShape,
             ),
             height: this.imageHeight,
             width: this.imageWidth,
+            child: this.child,
           ),
           Container(
             height: this.statusIconHeight != null
@@ -113,11 +116,12 @@ class Avatar extends StatelessWidget {
             borderRadius: this.borderRadius,
             border: this.border,
             image: this.image,
-            color: CustomColors.blue,
+            color: this.backgroundColor != null ? this.backgroundColor :  Theme.of(context).primaryColor,
             shape: this.boxShape,
           ),
           height: this.imageHeight,
           width: this.imageWidth,
+          child: Center(child: this.child),
         );
       }
     }

@@ -77,6 +77,7 @@ class WVBasicTextButton extends StatelessWidget {
 
     return Container(
       width: buttonSizes.width,
+      color: this.backgroundColor,
       child: MaterialButton(
         enableFeedback: this.enableFeedback,
         hoverElevation: 0,
@@ -97,7 +98,7 @@ class WVBasicTextButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: this.cornerRadius == null ? BorderRadius.circular(buttonShapes.borderRadius) : BorderRadius.circular(this.cornerRadius)),
         elevation: this.elevation,
-        color: this.backgroundColor ,
+        color: Colors.white,
         onPressed: this.onPressed,
         child: Container(
           child: Row(
