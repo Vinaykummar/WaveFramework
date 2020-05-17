@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Position position;
 
   MapboxMapController mapboxMapController;
+  var appBar = LocationAppBar1();
 
   bool _gotCurrentPosition = false;
 
@@ -132,7 +133,32 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
-                 
+                SizedBox(
+                  height: 10,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: <Widget>[
+                      MiniStoreDetails(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      MiniStoreDetails(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                       MiniStoreDetails(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      MiniStoreDetails(),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -173,6 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                       )
                     : DiscoverMore(),
+                    
               ],
             ),
           ),

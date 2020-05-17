@@ -17,8 +17,8 @@ class MiniStoreDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ImageOverlay(
-      height: 120,
-      width: 200,
+      height: 140,
+      width: 240,
       gradientOverlay: true,
       gradient: LinearGradient(colors: [Colors.transparent, Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter),
       mainAxisAlignment: MainAxisAlignment.end,

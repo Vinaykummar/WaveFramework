@@ -17,7 +17,7 @@ class DiscoverMore extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImageOverlay(
        solidBackground: true,
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.all(10),
         opacity: 1,
         color: Colors.black,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -63,24 +63,7 @@ class DiscoverMore extends StatelessWidget {
               )
             ],
           ),
-         SizedBox(
-                  height: 10,
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: <Widget>[
-                      MiniStoreDetails(),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      MiniStoreDetails(),
-                      SizedBox(
-                        width: 10,
-                      ),
-                    ],
-                  ),
-                ),
+        
         ],
       );
   }
